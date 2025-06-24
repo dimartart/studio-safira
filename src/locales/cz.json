@@ -1,0 +1,278 @@
+{
+  "navbar": {
+    "home": "Domů",
+    "hairdressing": "Kadeřnictví",
+    "cosmetics": "Kosmetika",
+    "massage": "Masáže",
+    "nails": "Pedikúra",
+    "lymphatic": "Lymfa",
+    "contact": "Kontakt",
+    "about": "O nás",
+    "reservation": "Rezervace"
+  },
+  "hero": {
+    "title": "Změňte svůj styl v našem kosmetickém",
+    "titleSpan": " salonu",
+    "subtitle": "Vítáme Vás na stránkách našeho studia",
+    "reservationButton": "Rezervace",
+    "promoText": "Rezervujte si termín hned teď a získejte slevu 20 % !"
+  },
+  "kadernictvi": {
+    "title": "Kadeřnictví",
+    "stylist": "BERANOVÁ Lucie",
+    "phone": "Objednávky na tel: 607 191 088",
+    "women": {
+      "title": "Dámské",
+      "washCutStyle": "Mytí, regenerace, střih, foukaná, styling",
+      "washCutStylePrice": "od 870,-",
+      "cut": "Střih",
+      "cutPrice": "od 450,-",
+      "blowDry": "Foukaná",
+      "blowDryPrice": "od 340,-",
+      "highlights": "Melír",
+      "highlightsPrice": "od 750,-",
+      "microHighlights": "Micro melír, balayage, ombre",
+      "microHighlightsPrice": "od 1275,-",
+      "perm": "Trvalá ondulace",
+      "permPrice": "od 625,-"
+    },
+    "men": {
+      "title": "Pánské",
+      "washCutStyle": "Mytí, reg, střih, vysušení, styling",
+      "washCutStylePrice": "od 440,-",
+      "buzzCut": "Střih strojkem",
+      "buzzCutPrice": "200,-",
+      "crownCut": "Střih věnečku",
+      "crownCutPrice": "120,-"
+    },
+    "children": {
+      "title": "Dětské (do 7 let věku)",
+      "boys": "Chlapecký střih",
+      "boysPrice": "od 250,-",
+      "girls": "Dívčí střih",
+      "girlsPrice": "od 280,-"
+    },
+    "seniors": {
+      "title": "Senioři nad 65 let",
+      "women": "Kompletní dámský střih s upravou a stylingem",
+      "womenPrice": "460,-",
+      "men": "Pánský střih",
+      "menPrice": "220,-"
+    },
+    "disclaimer": "Ceny jsou orientační, konečnou cenu určuje kadeřník v závislosti na délce vlasů, použitých prostředků a doplňující péče. Kompletní podrobný ceník k nahlédnutí ve studiu."
+  },
+  "cosmetics": {
+    "title": "Kosmetika",
+    "specialist": "LAUŠOVÁ Markéta",
+    "phone": "Objednávky na tel: 704 446 627",
+    "basic": {
+      "title": "Základní služby",
+      "eyelashTinting": "Barvení řas",
+      "eyelashTintingPrice": "159,-",
+      "eyebrowTinting": "Barvení obočí",
+      "eyebrowTintingPrice": "129,-",
+      "eyebrowShaping": "Úprava obočí",
+      "eyebrowShapingPrice": "99,-",
+      "eyeMicromassage": "Mikromasáž očního okolí",
+      "eyeMicromassagePrice": "320,-"
+    },
+    "depilation": {
+      "title": "Depilace",
+      "upperLip": "Depilace horního rtu",
+      "upperLipPrice": "od 89,-",
+      "chin": "Depilace brady",
+      "chinPrice": "od 89,-",
+      "fullFace": "Depilace tváří celého obličeje",
+      "fullFacePrice": "249,-",
+      "fullLegs": "Depilace celých nohou",
+      "fullLegsPrice": "549,-",
+      "bikini": "Depilace třísel",
+      "bikiniPrice": "190,-",
+      "calves": "Depilace lýtek",
+      "calvesPrice": "320,-",
+      "underarms": "Depilace podpaží",
+      "underarmsPrice": "180,-"
+    },
+    "facials": {
+      "title": "Ošetření pleti",
+      "complete": {
+        "title": "Celkové ošetření pleti",
+        "description": "Odlíčení, peelingová masáž, tonizace, úprava obočí, masáž obličeje, dekoltu a trapézových svalů, hloubkové čištění, aplikace masky, závěrečná úprava",
+        "duration": "90 min",
+        "price": "790,-"
+      },
+      "problematic": {
+        "title": "Ošetření problematické pleti",
+        "description": "Odlíčení pleti, tonizace, úprava obočí, změkčení pleti, hloubkové čištění, desinfekce, tonizace, aplikace masky, konečná úprava",
+        "duration": "90 min",
+        "price": "790,-"
+      },
+      "chocolate": {
+        "title": "Čokoládové relaxační ošetření",
+        "description": "Odlíčení, kávový peeling, úprava obočí, čokoládová masáž obličeje, dekoltu a trapézových svalů, aplikace čokoládové masky, tonizace, konečná úprava",
+        "duration": "90 min",
+        "price": "749,-"
+      },
+      "eyeArea": {
+        "title": "Mikromasáž očního okolí",
+        "description": "Odlíčení, mikromasáž očního okolí s anti-aging efektem, závěrečná úprava",
+        "duration": "40 min",
+        "price": "320,-"
+      }
+    }
+  },
+  "massage": {
+    "title": "Masáže",
+    "specialist": "KOPEĹUK Eva",
+    "phone": "Objednávky na tel: 774 262 152",
+    "description": {
+      "title": "O našich masážích",
+      "intro": "Dopřejte si hlubokou relaxaci a harmonii díky široké nabídce masáží, které pečují o tělo i mysl.",
+      "specialization": "Specializuji se na reflexologii plosky nohou a reflexoterapii, které pomáhají obnovit rovnováhu v těle a podpořit samoléčebné procesy.",
+      "additional": "Nabízím také masáže nohou pro uvolnění napětí a regeneraci, stejně jako sportovně-relaxační rekondiční masáže pro zlepšení pohyblivosti a zmírnění bolesti svalů. Pro ty, kteří preferují jemnější přístup, jsou ideální asyrské bezkontaktní masáže nebo krystaloterapie - masáže s využitím léčivé síly krystalů.",
+      "conclusion": "Ať už hledáte úlevu od stressu, regeneraci nebo harmonizaci, ráda Vám pomohu najít masáž na míru Vašim potřebám."
+    },
+    "therapeutic": {
+      "title": "Terapeutické masáže",
+      "sports": "Sportovně-rekondiční regenerační a relaxační masáže",
+      "sportsPrice": "890,-",
+      "reflexFull": "Celková reflexní terapie",
+      "reflexFullPrice": "1 000,-",
+      "reflexFullDuration": "délka 60 min",
+      "reflexFoot": "Reflexní terapie nohou",
+      "reflexFootPrice": "500,-",
+      "reflexFootDuration": "délka 30 min"
+    },
+    "alternative": {
+      "title": "Alternativní terapie",
+      "assyrian": "Asyrské bezkontaktní masáže",
+      "assyrianPrice": "800,-",
+      "assyrianDuration": "délka 60 min",
+      "crystalMassage": "Masáž s krystaly",
+      "crystalMassagePrice": "700,-",
+      "crystalMassageDuration": "délka 60 min",
+      "crystalTherapy": "Krystaloterapie",
+      "crystalTherapyPrice": "500,-"
+    },
+    "services": {
+      "title": "Nabízené služby",
+      "footReflex": "Reflexologie plosky nohou",
+      "reflexotherapy": "Reflexoterapie",
+      "footMassage": "Masáže nohou",
+      "sportsReconditioning": "Sportovně relaxační rekondiční masáže",
+      "assyrianNonContact": "Asyrské bezkontaktní masáže",
+      "crystalTherapy": "Krystaloterapie",
+      "crystalMassages": "Masáže s krystaly",
+      "andMore": "...a mnoho dalšího"
+    },
+    "footer": "Těším se na Vaši návštěvu"
+  },
+  "nails": {
+    "title": "Pedikúra",
+    "specialist": "KOPEĹUK Eva",
+    "phone": "Objednávky na tel: 774 262 152",
+    "description": {
+      "title": "Pedikúra pro každého",
+      "intro": "Vyberte si z různých typů pedikúry od wellness a komfortní péče až po odbornou mediciální nebo podologickou pedikúru.",
+      "clientInfo": "Pečuji o ženy, muže, seniory i diabetiky.",
+      "homeService": "Pokud preferujete pohodlí domova, ráda přijedu přímo k Vám. Dopřejte svým chodidlům tu nejlepší péči a objednejte si ji ještě dnes."
+    },
+    "types": {
+      "title": "Typy pedikúry",
+      "relax": "Pedikúra Relax - kombinovaná pedikúra s peelingem",
+      "comfort": "Pedikúra Komfort - kombinovaná pedikúra s masáží",
+      "medical": "Mediciální pedikúra - kuří oka, zarostlé nehty, zrohovatělá kůže",
+      "wellness": "Pedikúra Wellness - kombinovaná ped. vč. peelingu, masáží, lakování",
+      "wet": "Mokrá pedikúra - kombinovaná",
+      "semiDry": "Polosuchá pedikúra",
+      "instrument": "Přístrojová pedikúra",
+      "mens": "Pánská pedikúra",
+      "podiatric": "Podologická pedikúra",
+      "seniors": "Pedikúra pro seniory",
+      "mobile": "Terénní pedikúra - v pohodlí domova, kanceláři, LDN, domově seniorů"
+    },
+    "pricing": {
+      "standard": {
+        "title": "Standardní služby",
+        "combined": "Kombinovaná pedikúra",
+        "combinedPrice": "650,-",
+        "wet": "Mokrá pedikúra",
+        "wetPrice": "650,-",
+        "dry": "Suchá pedikúra",
+        "dryPrice": "750,-",
+        "mens": "Pánská pedikúra",
+        "mensPrice": "650,-",
+        "spa": "Spa pedikúra",
+        "spaPrice": "650,-",
+        "spaGel": "Spa pedikúra + gel lak",
+        "spaGelPrice": "800,-"
+      },
+      "specialized": {
+        "title": "Specializované služby",
+        "medical": "Mediciální přístrojová pedikúra",
+        "medicalPrice": "750,-",
+        "health": "Zdravotní pedikúra",
+        "healthPrice": "800,-",
+        "diabetic": "Podologická diabetická pedikúra",
+        "diabeticPrice": "750,-",
+        "seniors": "Pedikúra pro seniory",
+        "seniorsPrice": "450,-",
+        "vitamins": "Pedikúra + lak s vitamíny",
+        "vitaminsPrice": "250,-",
+        "mobile": "Mobilní pedikúra",
+        "mobilePrice": "890,-",
+        "mobileTransport": "doprava po Praze tam i zpět +190,-"
+      }
+    },
+    "additional": {
+      "title": "Další služby",
+      "combyped": "Nehtové špony Comby ped.",
+      "combypedPrice": "1 000,-",
+      "bs": "Špony B/S",
+      "bsPrice": "800,-",
+      "naspan": "Špony Naspan",
+      "naspanPrice": "1 000,-",
+      "corrector": "Individuální korektor",
+      "correctorPrice": "od 400,-",
+      "titanium": "Titanové nitě (rovnátka)",
+      "titaniumPrice": "1 000,-"
+    },
+    "footer": {
+      "message": "Těším se na Vaši návštěvu",
+      "studio": "Studio Safira"
+    }
+  },
+  "lymphatic": {
+    "title": "Lymfatické ošetření",
+    "specialist": "ŠÍRLOVÁ Lída",
+    "phone": "Objednávky na tel: 734 132 178",
+    "service": {
+      "title": "Lymfatické ošetření",
+      "single": {
+        "title": "1 procedura",
+        "price": "500,-",
+        "description": "délka procedury 30 min + diagnostika těla zdarma"
+      }
+    },
+    "packages": {
+      "title": "Zvýhodněné balíčky",
+      "package5": {
+        "title": "Balíček 5x",
+        "price": "2 100,-",
+        "description": "5x procedura po 30ti minutách + diagnostika"
+      },
+      "package10": {
+        "title": "Balíček 10x",
+        "price": "3 800,-",
+        "description": "10x procedura po 30ti minutách + diagnostika"
+      }
+    },
+    "lipolysis": {
+      "title": "Doplňující služby",
+      "service": "Lypolíza",
+      "price": "990,-",
+      "description": "včetně lymfy"
+    },
+    "footer": "Těším se na Vaši návštěvu"
+  }
+} 

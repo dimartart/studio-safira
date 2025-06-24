@@ -1,0 +1,278 @@
+{
+  "navbar": {
+    "home": "Home",
+    "hairdressing": "Hairdressing",
+    "cosmetics": "Cosmetics",
+    "massage": "Massage",
+    "nails": "Nails",
+    "lymphatic": "Lymphatic",
+    "contact": "Contact",
+    "about": "About Us",
+    "reservation": "Reservation"
+  },
+  "hero": {
+    "title": "Transform your style in our cosmetic",
+    "titleSpan": " salon",
+    "subtitle": "Welcome to our studio website",
+    "reservationButton": "Reservation",
+    "promoText": "Book your appointment now and get 20% discount!"
+  },
+  "kadernictvi": {
+    "title": "Hairdressing",
+    "stylist": "BERANOVÁ Lucie",
+    "phone": "Appointments: 607 191 088",
+    "women": {
+      "title": "Women's Services",
+      "washCutStyle": "Wash, treatment, cut, blow-dry, styling",
+      "washCutStylePrice": "from 870,-",
+      "cut": "Cut",
+      "cutPrice": "from 450,-",
+      "blowDry": "Blow-dry",
+      "blowDryPrice": "from 340,-",
+      "highlights": "Highlights",
+      "highlightsPrice": "from 750,-",
+      "microHighlights": "Micro highlights, balayage, ombre",
+      "microHighlightsPrice": "from 1275,-",
+      "perm": "Permanent wave",
+      "permPrice": "from 625,-"
+    },
+    "men": {
+      "title": "Men's Services",
+      "washCutStyle": "Wash, treatment, cut, dry, styling",
+      "washCutStylePrice": "from 440,-",
+      "buzzCut": "Buzz cut",
+      "buzzCutPrice": "200,-",
+      "crownCut": "Crown cut",
+      "crownCutPrice": "120,-"
+    },
+    "children": {
+      "title": "Children's Services (up to 7 years)",
+      "boys": "Boy's cut",
+      "boysPrice": "from 250,-",
+      "girls": "Girl's cut",
+      "girlsPrice": "from 280,-"
+    },
+    "seniors": {
+      "title": "Seniors over 65",
+      "women": "Complete women's cut with styling",
+      "womenPrice": "460,-",
+      "men": "Men's cut",
+      "menPrice": "220,-"
+    },
+    "disclaimer": "Prices are indicative, final price is determined by the hairdresser depending on hair length, products used and additional care. Complete detailed price list available at the studio."
+  },
+  "cosmetics": {
+    "title": "Cosmetics",
+    "specialist": "LAUŠOVÁ Markéta",
+    "phone": "Appointments: 704 446 627",
+    "basic": {
+      "title": "Basic Services",
+      "eyelashTinting": "Eyelash tinting",
+      "eyelashTintingPrice": "159,-",
+      "eyebrowTinting": "Eyebrow tinting",
+      "eyebrowTintingPrice": "129,-",
+      "eyebrowShaping": "Eyebrow shaping",
+      "eyebrowShapingPrice": "99,-",
+      "eyeMicromassage": "Eye area micromassage",
+      "eyeMicromassagePrice": "320,-"
+    },
+    "depilation": {
+      "title": "Hair Removal",
+      "upperLip": "Upper lip hair removal",
+      "upperLipPrice": "from 89,-",
+      "chin": "Chin hair removal",
+      "chinPrice": "from 89,-",
+      "fullFace": "Full face hair removal",
+      "fullFacePrice": "249,-",
+      "fullLegs": "Full leg hair removal",
+      "fullLegsPrice": "549,-",
+      "bikini": "Bikini area hair removal",
+      "bikiniPrice": "190,-",
+      "calves": "Calf hair removal",
+      "calvesPrice": "320,-",
+      "underarms": "Underarm hair removal",
+      "underarmsPrice": "180,-"
+    },
+    "facials": {
+      "title": "Facial Treatments",
+      "complete": {
+        "title": "Complete Facial Treatment",
+        "description": "Makeup removal, exfoliating massage, toning, eyebrow shaping, face, décolletage and trapezius muscle massage, deep cleansing, mask application, final care",
+        "duration": "90 min",
+        "price": "790,-"
+      },
+      "problematic": {
+        "title": "Problematic Skin Treatment",
+        "description": "Makeup removal, toning, eyebrow shaping, skin softening, deep cleansing, disinfection, toning, mask application, final care",
+        "duration": "90 min",
+        "price": "790,-"
+      },
+      "chocolate": {
+        "title": "Chocolate Relaxing Treatment",
+        "description": "Makeup removal, coffee peeling, eyebrow shaping, chocolate massage of face, décolletage and trapezius muscles, chocolate mask application, toning, final care",
+        "duration": "90 min",
+        "price": "749,-"
+      },
+      "eyeArea": {
+        "title": "Eye Area Micromassage",
+        "description": "Makeup removal, eye area micromassage with anti-aging effect, final care",
+        "duration": "40 min",
+        "price": "320,-"
+      }
+    }
+  },
+  "massage": {
+    "title": "Massage",
+    "specialist": "KOPEĹUK Eva",
+    "phone": "Appointments: 774 262 152",
+    "description": {
+      "title": "About Our Massages",
+      "intro": "Treat yourself to deep relaxation and harmony through our wide range of massages that care for both body and mind.",
+      "specialization": "I specialize in foot sole reflexology and reflexotherapy, which help restore balance in the body and support self-healing processes.",
+      "additional": "I also offer foot massages for tension relief and regeneration, as well as sports-relaxation reconditioning massages to improve mobility and reduce muscle pain. For those who prefer a gentler approach, Assyrian non-contact massages or crystal therapy - massages using the healing power of crystals - are ideal.",
+      "conclusion": "Whether you're looking for stress relief, regeneration, or harmonization, I'll be happy to help you find a massage tailored to your needs."
+    },
+    "therapeutic": {
+      "title": "Therapeutic Massages",
+      "sports": "Sports-reconditioning regenerative and relaxing massages",
+      "sportsPrice": "890,-",
+      "reflexFull": "Complete reflex therapy",
+      "reflexFullPrice": "1 000,-",
+      "reflexFullDuration": "60 min duration",
+      "reflexFoot": "Foot reflex therapy",
+      "reflexFootPrice": "500,-",
+      "reflexFootDuration": "30 min duration"
+    },
+    "alternative": {
+      "title": "Alternative Therapies",
+      "assyrian": "Assyrian non-contact massages",
+      "assyrianPrice": "800,-",
+      "assyrianDuration": "60 min duration",
+      "crystalMassage": "Crystal massage",
+      "crystalMassagePrice": "700,-",
+      "crystalMassageDuration": "60 min duration",
+      "crystalTherapy": "Crystal therapy",
+      "crystalTherapyPrice": "500,-"
+    },
+    "services": {
+      "title": "Services Offered",
+      "footReflex": "Foot sole reflexology",
+      "reflexotherapy": "Reflexotherapy",
+      "footMassage": "Foot massages",
+      "sportsReconditioning": "Sports-relaxation reconditioning massages",
+      "assyrianNonContact": "Assyrian non-contact massages",
+      "crystalTherapy": "Crystal therapy",
+      "crystalMassages": "Massages with crystals",
+      "andMore": "...and much more"
+    },
+    "footer": "I look forward to your visit"
+  },
+  "nails": {
+    "title": "Pedicure",
+    "specialist": "KOPEĹUK Eva",
+    "phone": "Appointments: 774 262 152",
+    "description": {
+      "title": "Pedicure for Everyone",
+      "intro": "Choose from various types of pedicure from wellness and comfort care to professional medical or podiatric pedicure.",
+      "clientInfo": "I care for women, men, seniors, and diabetics.",
+      "homeService": "If you prefer the comfort of home, I'll be happy to come directly to you. Give your feet the best care and book today."
+    },
+    "types": {
+      "title": "Types of Pedicure",
+      "relax": "Relax Pedicure - combined pedicure with peeling",
+      "comfort": "Comfort Pedicure - combined pedicure with massage",
+      "medical": "Medical Pedicure - corns, ingrown nails, callused skin",
+      "wellness": "Wellness Pedicure - combined ped. incl. peeling, massage, polishing",
+      "wet": "Wet Pedicure - combined",
+      "semiDry": "Semi-dry Pedicure",
+      "instrument": "Instrument Pedicure",
+      "mens": "Men's Pedicure",
+      "podiatric": "Podiatric Pedicure",
+      "seniors": "Pedicure for Seniors",
+      "mobile": "Mobile Pedicure - in the comfort of home, office, nursing home, senior home"
+    },
+    "pricing": {
+      "standard": {
+        "title": "Standard Services",
+        "combined": "Combined Pedicure",
+        "combinedPrice": "650,-",
+        "wet": "Wet Pedicure",
+        "wetPrice": "650,-",
+        "dry": "Dry Pedicure",
+        "dryPrice": "750,-",
+        "mens": "Men's Pedicure",
+        "mensPrice": "650,-",
+        "spa": "Spa Pedicure",
+        "spaPrice": "650,-",
+        "spaGel": "Spa Pedicure + gel polish",
+        "spaGelPrice": "800,-"
+      },
+      "specialized": {
+        "title": "Specialized Services",
+        "medical": "Medical Instrument Pedicure",
+        "medicalPrice": "750,-",
+        "health": "Health Pedicure",
+        "healthPrice": "800,-",
+        "diabetic": "Podiatric Diabetic Pedicure",
+        "diabeticPrice": "750,-",
+        "seniors": "Pedicure for Seniors",
+        "seniorsPrice": "450,-",
+        "vitamins": "Pedicure + polish with vitamins",
+        "vitaminsPrice": "250,-",
+        "mobile": "Mobile Pedicure",
+        "mobilePrice": "890,-",
+        "mobileTransport": "transport in Prague round trip +190,-"
+      }
+    },
+    "additional": {
+      "title": "Additional Services",
+      "combyped": "Nail Clips Comby ped.",
+      "combypedPrice": "1 000,-",
+      "bs": "B/S Clips",
+      "bsPrice": "800,-",
+      "naspan": "Naspan Clips",
+      "naspanPrice": "1 000,-",
+      "corrector": "Individual Corrector",
+      "correctorPrice": "from 400,-",
+      "titanium": "Titanium Threads (braces)",
+      "titaniumPrice": "1 000,-"
+    },
+    "footer": {
+      "message": "I look forward to your visit",
+      "studio": "Studio Safira"
+    }
+  },
+  "lymphatic": {
+    "title": "Lymphatic Treatment",
+    "specialist": "ŠÍRLOVÁ Lída",
+    "phone": "Appointments: 734 132 178",
+    "service": {
+      "title": "Lymphatic Treatment",
+      "single": {
+        "title": "1 procedure",
+        "price": "500,-",
+        "description": "procedure duration 30 min + free body diagnostics"
+      }
+    },
+    "packages": {
+      "title": "Discounted Packages",
+      "package5": {
+        "title": "5x Package",
+        "price": "2 100,-",
+        "description": "5x procedure of 30 minutes + diagnostics"
+      },
+      "package10": {
+        "title": "10x Package",
+        "price": "3 800,-",
+        "description": "10x procedure of 30 minutes + diagnostics"
+      }
+    },
+    "lipolysis": {
+      "title": "Additional Services",
+      "service": "Lipolysis",
+      "price": "990,-",
+      "description": "including lymphatic treatment"
+    },
+    "footer": "I look forward to your visit"
+  }
+} 
