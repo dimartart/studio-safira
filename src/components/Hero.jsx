@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 const Hero = () => {
     const { t } = useTranslation();
     return(
-        <div className="relative bg-[#1B191A] flex flex-col lg:flex-row px-4 sm:px-6 lg:px-[10%] py-8 lg:py-[4rem] lg:pb-[7rem]">
-            <div className="order-2 md:order-1 flex flex-col gap-4 items-center lg:items-start justify-center relative w-full lg:w-[50%] text-center lg:text-left">                
+        <div className="relative bg-[#1B191A] mt-6 flex flex-col lg:flex-row px-4 sm:px-6 lg:px-[10%] py-8 lg:py-[4rem] lg:pb-[7rem]">
+            <div className="order-2 md:order-1 flex flex-col gap-1 lg:gap-4 items-center lg:items-start justify-center relative w-full lg:w-[50%] text-center lg:text-left">                
                 <h2
                     className="hidden md:block text-transparent text-4xl sm:text-5xl md:text-6xl lg:text-[7rem] font-bold absolute top-1 left-0 lg:left-[9%] w-full lg:w-auto"
                     style={{
@@ -21,8 +21,8 @@ const Hero = () => {
                 <div className="text-[#a1a1a1] text-[2rem] py-3 lg:py-2">
                     {t('hero.subtitle')}
                 </div>
-                <div className="flex flex-col items-center sm:flex-row gap-4 lg:gap-[2rem] pt-0 lg:pt-[1rem] px-4 lg:px-0">
-                    <a href="#reservation" className="text-white text-sm lg:text-base py-3 lg:py-5 px-4 bg-[#D41C8A] rounded-3xl text-center">
+                <div className="flex flex-col items-center  sm:flex-row gap-4 lg:gap-[2rem] pt-0 lg:pt-[1rem] px-4 lg:px-0">
+                    <a href="#reservation" className="text-white text-[1.7rem] lg:text-xl py-3 lg:py-5 px-4 bg-[#D41C8A] rounded-3xl text-center">
                         {t('hero.reservationButton')}
                     </a>
                     <p className="hidden sm:block text-white text-sm lg:text-base py-3 lg:py-5 px-4 rounded-full text-center border border-[#D41C8A]" style={{ boxShadow: "0 2px 4px 0 #D41C8A" }}>

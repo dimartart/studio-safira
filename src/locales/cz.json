@@ -164,8 +164,8 @@
       "crystalTherapy": "Krystaloterapie",
       "crystalMassages": "Masáže s krystaly",
       "andMore": "...a mnoho dalšího"
-    },
-    "footer": "Těším se na Vaši návštěvu"
+      },
+  "footer": "Těším se na Vaši návštěvu"
   },
   "nails": {
     "title": "Pedikúra",
@@ -274,5 +274,33 @@
       "description": "včetně lymfy"
     },
     "footer": "Těším se na Vaši návštěvu"
+  },
+  "service": {
+    "hairdressing": "KADEŘNICTVÍ",
+    "cosmetics": "KOSMETIKA",
+    "massage": "MASÁŽE",
+    "nails": "PEDIKÚRA",
+    "lymphatic": "LYMFA"
+  },
+  "reviews": {
+    "title": "Recenze klientů",
+    "subtitle": "Co říkají naši spokojení klienti",
+    "verifiedGuest": "Ověřený host",
+    "client1": {
+      "name": "Eva Tinková",
+      "text": "Studio Safira jsem objevila náhodou, když jsem (jako vždy) hledala narychlo kadeřnici. Lucka mi našla termín hned následující pracovní den a co víc — udělala mi snad nejhezčí a nejhustší melír, jaký jsem kdy na hlavě měla, a že jich za těch více než 20 let už bylo."
+    },
+    "client2": {
+      "name": "Marie Mírková", 
+      "text": "Dnes jsem nečekaně poprvé zavítala do kadeřnictví přímo k paní Lucii Beranové. Velice příjemné a přátelské prostředí. Odcházela jsem nadšená s účesem a barvou přesně dle mého přání, vřele salon doporučuji!"
+    },
+    "client3": {
+      "name": "Jana Janeček",
+      "text": "V salonu jsem byla poprvé a rozhodně ne naposledy. Jsem velmi spokojená jak se střihem, tak s přelivem. Lucka je opravdu příjemná a šikovná kadeřnice a člověk se v salonu cítí příjemně a výsledek za to stojí! Určitě se nenechte odradit webem 😊"
+    },
+    "client4": {
+      "name": "Zuzana Slabyhoudova",
+      "text": "Naprosto skvělá kadeřnice (jedna z úplně nejlepších, co jsem kdy poznala)! Nejenže je velmi šikovná a zručná, ale lidsky je taky super a je radost k ní chodit. Velmi doporučuju! Už se těším na příště :) ZS P.S.: Minule mi vytvořila tehle luxusní střih, to se nejde nepodělit."
+    }
   }
 } 

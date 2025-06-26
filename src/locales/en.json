@@ -164,7 +164,7 @@
       "crystalTherapy": "Crystal therapy",
       "crystalMassages": "Massages with crystals",
       "andMore": "...and much more"
-    },
+      },
     "footer": "I look forward to your visit"
   },
   "nails": {
@@ -274,5 +274,33 @@
       "description": "including lymphatic treatment"
     },
     "footer": "I look forward to your visit"
+  },
+  "service": {
+    "hairdressing": "HAIRDRESSING",
+    "cosmetics": "COSMETICS",
+    "massage": "MASSAGE",
+    "nails": "NAILS",
+    "lymphatic": "LYMPHATIC"
+  },
+  "reviews": {
+    "title": "Client Reviews",
+    "subtitle": "What our satisfied clients say",
+    "verifiedGuest": "Verified Guest",
+    "client1": {
+      "name": "Eva Tinková",
+      "text": "I discovered Studio Safira by chance when I was (as always) urgently looking for a hairdresser. Lucka found me an appointment the very next working day and what's more — she gave me perhaps the most beautiful and fullest highlights I've ever had on my head, and I've had many in over 20 years."
+    },
+    "client2": {
+      "name": "Marie Mírková",
+      "text": "Today I unexpectedly visited the hairdressing salon directly to Mrs. Lucia Beranová for the first time. Very pleasant and friendly environment. I left enthusiastic with a hairstyle and color exactly according to my wishes, I warmly recommend the salon!"
+    },
+    "client3": {
+      "name": "Jana Janeček", 
+      "text": "I was in the salon for the first time and definitely not the last time. I am very satisfied with both the cut and the highlights. Lucka is really nice and skilled hairdresser and one feels comfortable in the salon and the result is worth it! Definitely don't be put off by the website 😊"
+    },
+    "client4": {
+      "name": "Zuzana Slabyhoudova",
+      "text": "Absolutely excellent hairdresser (one of the absolute best I've ever met)! Not only is she very skilled and dexterous, but she's also great as a person and it's a joy to go to her. I highly recommend! I'm already looking forward to next time :) ZS P.S.: Last time she created this luxurious cut for me, I can't help but share it."
+    }
   }
 } 

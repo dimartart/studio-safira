@@ -4,7 +4,7 @@ const Nails = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="min-h-screen py-30 lg:py-20">
+        <div className="min-h-screen py-30 lg:py-20 mt-0 lg:mt-6">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-10 lg:mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">

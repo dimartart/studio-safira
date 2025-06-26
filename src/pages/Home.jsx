@@ -5,6 +5,7 @@ import Service from '../components/Service'
 import Portfolio from '../components/Portfolio'
 import Reservation from '../components/Reservation'
 import About from '../components/About'
+import ClientReviews from '../components/ClientReviews'
 import ScrollFadeIn from '../components/FadeInAnim'
 
 const Home = () => {
@@ -20,6 +21,10 @@ const Home = () => {
 
       <ScrollFadeIn>
         <About/>
+      </ScrollFadeIn>
+
+      <ScrollFadeIn>
+        <ClientReviews/>
       </ScrollFadeIn>
 
       <ScrollFadeIn>
