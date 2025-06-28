@@ -52,7 +52,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-16">
                     <div>
                         <Link to="/" className="flex items-center gap-2 text-lg md:text-xl font-semibold tracking-wider text-[#D41C8A]">
-                            <img src="logo.png" alt="Logo Studio Safira" className="w-10 h-10" />
+                            <img src="/logo.png" alt="Logo Studio Safira" className="w-10 h-10" />
                             Studio Safira
                         </Link>
                     </div>

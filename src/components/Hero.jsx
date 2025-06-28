@@ -39,7 +39,7 @@ const Hero = () => {
             </section>
             <aside className="mb-0 md:mb-4 order-1 md:order-2 w-full lg:w-[50%] flex items-center justify-center gap-6 mt-8 lg:mt-0 lg:ml-10 relative [@media(min-width:1500px)]:items-start">
                 <img
-                    src="/hero/bg1.webp"
+                    src="hero/bg1.webp"
                     alt="Studio Safira - Profesionální kadeřnické služby v luxusním prostředí"
                     className="w-32 md:w-40 lg:w-[200px] rounded-2xl opacity-0 animate-[fadeIn_0.6s_ease-in_forwards]"
                     style={{
@@ -50,7 +50,7 @@ const Hero = () => {
                     height="300"
                 />
                 <img 
-                    src="hero/bg2.webp" 
+                    src="/hero/bg2.webp" 
                     alt="Studio Safira - Kosmetické ošetření a relaxační služby Praha 7"
                     className="rounded-3xl w-32 sm:w-32 md:w-40 lg:w-[200px] mt-4 lg:mt-4 opacity-0 animate-[fadeIn_0.6s_ease-in_0.6s_forwards]" 
                     style={{ boxShadow: "0 8px 32px 0 #D41C8A" }}
@@ -59,7 +59,7 @@ const Hero = () => {
                     height="300"
                 />
                 <img 
-                    src="hero/bg3.jpg" 
+                    src="/hero/bg3.jpg" 
                     alt="Studio Safira - Masáže a wellness služby v moderním studiu"
                     className="rounded-3xl w-32 sm:w-32 md:w-40 lg:w-[200px] absolute top-[40%] md:top-[25%] lg:top-[40%] opacity-0 animate-[fadeIn_0.6s_ease-in_0.4s_forwards]" 
                     style={{ boxShadow: "0 8px 32px 0 #D41C8A" }}
