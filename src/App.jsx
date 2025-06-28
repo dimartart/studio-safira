@@ -7,11 +7,13 @@ import Cosmetics from './pages/Cosmetics'
 import Massage from './pages/Massage'
 import Nails from './pages/Nails'
 import Lymphatic from './pages/Lymphatic'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <ScrollToTop />
         <Navbar/>
         <main>
           <Routes>
@@ -24,6 +26,7 @@ function App() {
           </Routes>
         </main>
         <Footer/>
+        <ScrollToTop />
       </div>
     </Router>
   )

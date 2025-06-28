@@ -19,7 +19,7 @@ const Massage = () => {
                 </div>
 
                 {/* Description Section */}
-                <div className="mb-12 bg-gradient-to-br from-[#2A2528] to-[#1B191A] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <div className="text-center">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6">
                             {t('massage.description.title')}
@@ -42,7 +42,7 @@ const Massage = () => {
                 {/* Services Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                     {/* Therapeutic Massages */}
-                    <div className="bg-gradient-to-br from-[#2A2528] to-[#1B191A] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className="p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('massage.therapeutic.title')}
                         </h2>
@@ -72,7 +72,7 @@ const Massage = () => {
                     </div>
 
                     {/* Alternative Therapies */}
-                    <div className="bg-gradient-to-br from-[#2A2528] to-[#1B191A] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('massage.alternative.title')}
                         </h2>
@@ -103,7 +103,7 @@ const Massage = () => {
                 </div>
 
                 {/* Services List */}
-                <div className="mb-12 bg-gradient-to-br from-[#2A2528] to-[#1B191A] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                         {t('massage.services.title')}
                     </h2>
@@ -127,8 +127,7 @@ const Massage = () => {
                     </div>
                 </div>
 
-                {/* Footer Message */}
-                <div className="mt-12 bg-gradient-to-r from-[#D41C8A]/10 via-[#D41C8A]/5 to-[#D41C8A]/10 p-6 rounded-2xl border border-[#D41C8A]/30">
+                <div className="mt-12 bg-[#D41C8A]/10  p-6 rounded-2xl border border-[#D41C8A]/30">
                     <p className="text-center text-gray-300 text-lg font-medium">
                         {t('massage.footer')}
                     </p>

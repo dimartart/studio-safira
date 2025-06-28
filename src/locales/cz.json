@@ -1,6 +1,7 @@
 {
   "navbar": {
     "home": "Domů",
+    "services": "Naše služby",
     "hairdressing": "Kadeřnictví",
     "cosmetics": "Kosmetika",
     "massage": "Masáže",
@@ -16,6 +17,47 @@
     "subtitle": "Vítáme Vás na stránkách našeho studia",
     "reservationButton": "Rezervace",
     "promoText": "Rezervujte si termín hned teď a získejte slevu 20 % !"
+  },
+  "about": {
+    "subtitle": "Najděte svůj jedinečný styl",
+    "title": "O nás",
+    "description1": "Kromě profesionálních kadeřnických služeb, nabízí i péči o tělo v oblasti manikúry, pedikúry, kosmetiky a péčí o vnitřní celkové zdraví přírodní cestou.",
+    "description2": "Pracujeme s profesionální vlasovou kosmetikou významných značek a nabízíme i prodej vlasové kosmetiky pro domácí péči. Nabízíme veškeré kadeřnické služby pro dámy, pány i děti. Zaměřujeme se na všechny možné trendy."
+  },
+  "reservationBanner": {
+    "title": "Připraveni na vaši transformaci?",
+    "subtitle": "Nechte se hýčkat v našem luxusním studiu. Rezervujte si termín ještě dnes a získejte nezapomenutelný zážitek.",
+    "button": "Rezervovat termín",
+    "additionalInfo": "Sleva 20% při první návštěvě • Flexibilní rušení • Expresní potvrzení"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Rádi vás uvidíme v našem studiu. Kontaktujte nás nebo se stavte osobně.",
+    "findUs": "Kde nás najdete",
+    "address": {
+      "title": "Adresa",
+      "info": "Praha 7 Turasova 13"
+    },
+    "phone": {
+      "title": "Hlavní telefon",
+      "info": "+420 607 191 088"
+    },
+    "email": {
+      "title": "Email",
+      "info": "studiosafira@seznam.cz"
+    },
+    "hours": {
+      "title": "Otevírací doba",
+      "info": "Po - Pá: 9:00 - 18:00\nSo: 9:00 - 16:00\nNe: Zavřeno"
+    },
+    "reservationButton": "Rezervovat termín",
+    "mapInfo": "Studio Safira - Praha 7",
+    "mapDescription": "Snadno dostupné městskou dopravou, parkování v okolí"
+  },
+  "footer": {
+    "contact": "Kontaktujte nás",
+    "quickLinks": "Rychlé odkazy",
+    "followUs": "Sledujte nás"
   },
   "kadernictvi": {
     "title": "Kadeřnictví",

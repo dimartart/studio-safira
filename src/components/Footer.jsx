@@ -1,10 +1,38 @@
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 const Footer = () => {
+    const { t } = useTranslation();
+
+    const services = [
+        {
+            nameKey: "navbar.hairdressing",
+            url: "/kadernictvi"
+        },
+        {
+            nameKey: "navbar.cosmetics",
+            url: "/cosmetics"
+        },
+        {
+            nameKey: "navbar.massage",
+            url: "/massage"
+        },
+        {
+            nameKey: "navbar.nails",
+            url: "/nails"
+        },
+        {
+            nameKey: "navbar.lymphatic",
+            url: "/lymphatic"
+        }
+    ]
+
     return (
         <footer className="bg-black text-white flex justify-center">
             <div className="max-w-7xl px-4 sm:px-6 lg:px-[10%] py-8 lg:py-[2rem]">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="text-center md:text-left">
-                        <h3 className="text-lg lg:text-xl font-semibold mb-4">Kontaktujte nás</h3>
+                        <h3 className="text-lg lg:text-xl font-semibold mb-4">{t('footer.contact')}</h3>
                         <p className="mb-2 text-sm lg:text-base">+420 607 191 088</p>
                         <p className="mb-2 text-sm lg:text-base">studiosafira@seznam.cz</p>
                         <p className="mb-2 text-sm lg:text-base">Praha 7 Holešovice</p>
@@ -13,16 +41,22 @@ const Footer = () => {
                     </div>
 
                     <div className="text-center md:text-left">
-                        <h3 className="text-lg lg:text-xl font-semibold mb-4">Rychlé odkazy</h3>
-                        <ul className="space-y-2">
-                            <li><a href="#about" className="hover:text-fuchsia-400 transition-colors text-sm lg:text-base">O nás</a></li>
-                            <li><a href="#services" className="hover:text-fuchsia-400 transition-colors text-sm lg:text-base">Naše služby</a></li>
-                            <li><a href="#cost" className="hover:text-fuchsia-400 transition-colors text-sm lg:text-base">Cena služeb</a></li>
-                        </ul>
+                        <h3 className="text-lg lg:text-xl font-semibold mb-4">{t('footer.quickLinks')}</h3>
+                        <div className="flex flex-col gap-2">
+                            <div className="flex flex-col gap-2">
+                                <Link to="/" className="hover:text-fuchsia-400 transition-colors text-sm lg:text-base">{t('navbar.home')}</Link>
+                                {services.map((service, index) => (
+                                    <Link to={service.url} key={index} className="hover:text-fuchsia-400"
+                                    >
+                                        {t(service.nameKey)}
+                                    </Link>
+                                ))}                                        
+                            </div>
+                        </div>
                     </div>
 
                     <div className="text-center md:text-left">
-                        <h3 className="text-lg lg:text-xl font-semibold mb-4">Follow Us</h3>
+                        <h3 className="text-lg lg:text-xl font-semibold mb-4">{t('footer.followUs')}</h3>
                         <div className="flex justify-center md:justify-start space-x-4">
                             <a href="https://www.facebook.com/StudioSafiraLucieBeranova#" className="hover:text-fuchsia-400 transition-colors flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="inline-block w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">

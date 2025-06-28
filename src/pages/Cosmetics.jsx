@@ -20,7 +20,7 @@ const Cosmetics = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                     {/* Basic Services */}
-                    <div className="bg-gradient-to-br from-[#2A2528] to-[#1B191A] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('cosmetics.basic.title')}
                         </h2>
@@ -46,7 +46,7 @@ const Cosmetics = () => {
                     </div>
 
                     {/* Depilation Services */}
-                    <div className="bg-gradient-to-br from-[#2A2528] to-[#1B191A] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('cosmetics.depilation.title')}
                         </h2>
@@ -86,7 +86,7 @@ const Cosmetics = () => {
 
                 <div className="grid grid-cols-1 gap-8">
                     {/* Facial Treatments */}
-                    <div className="bg-gradient-to-br from-[#2A2528] to-[#1B191A] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('cosmetics.facials.title')}
                         </h2>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://studiosafira.cz/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://studiosafira.cz/?lang=cs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiosafira.cz/?lang=en"/>
+  </url>
+  <url>
+    <loc>https://studiosafira.cz/kadernictvi</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://studiosafira.cz/kadernictvi?lang=cs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiosafira.cz/kadernictvi?lang=en"/>
+  </url>
+  <url>
+    <loc>https://studiosafira.cz/kosmetika</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://studiosafira.cz/kosmetika?lang=cs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiosafira.cz/kosmetika?lang=en"/>
+  </url>
+  <url>
+    <loc>https://studiosafira.cz/masaze</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://studiosafira.cz/masaze?lang=cs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiosafira.cz/masaze?lang=en"/>
+  </url>
+  <url>
+    <loc>https://studiosafira.cz/pedikura</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://studiosafira.cz/pedikura?lang=cs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiosafira.cz/pedikura?lang=en"/>
+  </url>
+  <url>
+    <loc>https://studiosafira.cz/lymfa</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://studiosafira.cz/lymfa?lang=cs"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://studiosafira.cz/lymfa?lang=en"/>
+  </url>
+</urlset> 

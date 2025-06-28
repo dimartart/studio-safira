@@ -19,7 +19,7 @@ const Lymphatic = () => {
                 </div>
 
                 {/* Main Service */}
-                <div className="mb-12 bg-gradient-to-br from-[#2A2528] to-[#1B191A] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-8 text-center">
                         {t('lymphatic.service.title')}
                     </h2>
@@ -34,7 +34,7 @@ const Lymphatic = () => {
                 </div>
 
                 {/* Package Deals */}
-                <div className="mb-12 bg-gradient-to-br from-[#2A2528] to-[#1B191A] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-8 text-center">
                         {t('lymphatic.packages.title')}
                     </h2>
@@ -55,7 +55,7 @@ const Lymphatic = () => {
                 </div>
 
                 {/* Additional Service */}
-                <div className="mb-12 bg-gradient-to-br from-[#2A2528] to-[#1B191A] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-8 text-center">
                         {t('lymphatic.lipolysis.title')}
                     </h2>
@@ -70,7 +70,7 @@ const Lymphatic = () => {
                 </div>
 
                 {/* Footer Message */}
-                <div className="mt-12 bg-gradient-to-r from-[#D41C8A]/10 via-[#D41C8A]/5 to-[#D41C8A]/10 p-6 rounded-2xl border border-[#D41C8A]/30">
+                <div className="mt-12 bg-[#D41C8A]/10 p-6 rounded-2xl border border-[#D41C8A]/30">
                     <p className="text-center text-gray-300 text-lg font-medium">
                         {t('lymphatic.footer')}
                     </p>

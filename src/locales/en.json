@@ -1,6 +1,7 @@
 {
   "navbar": {
     "home": "Home",
+    "services": "Our Services",
     "hairdressing": "Hairdressing",
     "cosmetics": "Cosmetics",
     "massage": "Massage",
@@ -16,6 +17,47 @@
     "subtitle": "Welcome to our studio website",
     "reservationButton": "Reservation",
     "promoText": "Book your appointment now and get 20% discount!"
+  },
+  "about": {
+    "subtitle": "Find your unique style",
+    "title": "About us",
+    "description1": "In addition to professional hairdressing services, we also offer body care in the areas of manicure, pedicure, cosmetics and inner health care in a natural way.",
+    "description2": "We work with professional hair cosmetics from renowned brands and also offer hair cosmetics sales for home care. We provide all hairdressing services for ladies, gentlemen and children. We focus on all possible trends."
+  },
+  "reservationBanner": {
+    "title": "Ready for your transformation?",
+    "subtitle": "Pamper yourself in our luxury studio. Book your appointment today and get an unforgettable experience.",
+    "button": "Book Appointment",
+    "additionalInfo": "20% off first visit • Flexible cancellation • Express confirmation"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "We'd love to see you at our studio. Contact us or visit us in person.",
+    "findUs": "Find Us",
+    "address": {
+      "title": "Address",
+      "info": "Praha 7 Turasova 13"
+    },
+    "phone": {
+      "title": "Main Phone",
+      "info": "+420 607 191 088"
+    },
+    "email": {
+      "title": "Email",
+      "info": "studiosafira@seznam.cz"
+    },
+    "hours": {
+      "title": "Opening Hours",
+      "info": "Mon - Fri: 9:00 - 18:00\nSat: 9:00 - 16:00\nSun: Closed"
+    },
+    "reservationButton": "Book Appointment",
+    "mapInfo": "Studio Safira - Prague 7",
+    "mapDescription": "Easily accessible by public transport, parking available nearby"
+  },
+  "footer": {
+    "contact": "Contact Us",
+    "quickLinks": "Quick Links",
+    "followUs": "Follow Us"
   },
   "kadernictvi": {
     "title": "Hairdressing",
