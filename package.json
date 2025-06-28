@@ -1,6 +1,6 @@
 {
-  "homepage": ".",
-  "name": "my-app",
+  "homepage": "https://studio-safira.vercel.app/react-app",
+  "name": "react-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
