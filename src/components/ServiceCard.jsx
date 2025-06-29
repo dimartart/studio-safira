@@ -62,14 +62,14 @@ const ServiceCard = () => {
                                 loading="lazy"
                                 decoding="async"
                             />
-                            <a
-                                href={service.link}
+                            <Link
+                                to={service.link}
                                 className="relative z-10 text-white uppercase font-bold px-4 lg:px-6 py-2 text-sm lg:text-base bg-fuchsia-300/20 rounded-2xl border-2 border-transparent transition-all duration-300 ease-in-out hover:scale-110 hover:border-[#D41C8A] focus:scale-110 focus:border-[#D41C8A] outline-none focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:ring-offset-2"
                                 aria-label={`${t(service.title)} - ${service.description}`}
                                 title={service.description}
                             >
                                 {t(service.title)}
-                            </a>
+                            </Link>
                         </div>
                     </article>
                 ))}
@@ -90,7 +90,7 @@ const ServiceCard = () => {
                                 decoding="async"
                             />
                             <Link
-                                href={service.link}
+                                to={service.link}
                                 className="relative z-10 text-white uppercase font-bold px-4 lg:px-6 py-2 text-sm lg:text-base bg-fuchsia-300/20 rounded-2xl border-2 border-transparent transition-all duration-300 ease-in-out hover:scale-110 hover:border-[#D41C8A] focus:scale-110 focus:border-[#D41C8A] outline-none focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:ring-offset-2"
                                 aria-label={`${t(service.title)} - ${service.description}`}
                                 title={service.description}
