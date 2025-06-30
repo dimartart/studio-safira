@@ -8,6 +8,7 @@ import Massage from './pages/Massage'
 import Nails from './pages/Nails'
 import Lymphatic from './pages/Lymphatic'
 import ScrollToTop from './components/ScrollToTop'
+import Supabase from './components/supabase'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/massage" element={<Massage />} />
             <Route path="/nails" element={<Nails />} />
             <Route path="/lymphatic" element={<Lymphatic />} />
+            <Route path="/supabase" element={<Supabase />} />
           </Routes>
         </main>
         <Footer/>
