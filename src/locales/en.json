@@ -344,5 +344,59 @@
       "name": "Zuzana Slabyhoudova",
       "text": "Absolutely excellent hairdresser (one of the absolute best I've ever met)! Not only is she very skilled and dexterous, but she's also great as a person and it's a joy to go to her. I highly recommend! I'm already looking forward to next time :) ZS P.S.: Last time she created this luxurious cut for me, I can't help but share it."
     }
+  },
+  "reservation": {
+    "title": "Book Appointment",
+    "warningBanner": {
+      "title": "⚠️ Important Reservation Information",
+      "cancelationPolicy": "You can cancel your reservation up to 4 hours before the appointment starts.",
+      "confirmationTime": "You will receive confirmation within 2 hours of submission.",
+      "arrivalTime": "Please arrive 5 minutes before your appointment time.",
+      "contactInfo": "If you have any issues, contact us at +420 607 191 088."
+    },
+    "form": {
+      "personalInfo": "Personal Information",
+      "name": "First Name",
+      "namePlaceholder": "Enter your first name",
+      "surname": "Last Name",
+      "surnamePlaceholder": "Enter your last name",
+      "phone": "Phone",
+      "phonePlaceholder": "+420 xxx xxx xxx",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "appointmentDetails": "Appointment Details",
+      "service": "Service",
+      "servicePlaceholder": "Select service",
+      "date": "Date",
+      "datePlaceholder": "Select date",
+      "time": "Time",
+      "timePlaceholder": "Select time",
+      "submitButton": "Book Appointment",
+      "submitting": "Submitting...",
+      "required": "Required field"
+    },
+    "services": [
+      { "value": "kadernictvi", "label": "Hairdressing" },
+      { "value": "kosmetika", "label": "Cosmetics" },
+      { "value": "masaze", "label": "Massage" },
+      { "value": "pedikura", "label": "Pedicure" },
+      { "value": "lymfodrenaz", "label": "Lymphatic Drainage" }
+    ],
+    "schedule": {
+      "monday": "Monday: 9:00 - 18:00",
+      "tuesday": "Tuesday: 9:00 - 18:00", 
+      "wednesday": "Wednesday: 9:00 - 18:00",
+      "thursday": "Thursday: 9:00 - 18:00",
+      "friday": "Friday: 9:00 - 18:00",
+      "saturday": "Saturday: 9:00 - 16:00",
+      "sunday": "Sunday: Closed"
+    },
+    "messages": {
+      "success": "Reservation submitted successfully! We will contact you soon.",
+      "error": "There was an error submitting your reservation. Please try again.",
+      "invalidDate": "Please select a valid date.",
+      "invalidTime": "Please select an available time.",
+      "closedDay": "We are closed on Sundays. Please select another day."
+    }
   }
 } 

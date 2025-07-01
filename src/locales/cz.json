@@ -344,5 +344,59 @@
       "name": "Zuzana Slabyhoudova",
       "text": "Naprosto skvělá kadeřnice (jedna z úplně nejlepších, co jsem kdy poznala)! Nejenže je velmi šikovná a zručná, ale lidsky je taky super a je radost k ní chodit. Velmi doporučuju! Už se těším na příště :) ZS P.S.: Minule mi vytvořila tehle luxusní střih, to se nejde nepodělit."
     }
+  },
+  "reservation": {
+    "title": "Rezervace termínu",
+    "warningBanner": {
+      "title": "⚠️ Důležité informace o rezervaci",
+      "cancelationPolicy": "Rezervaci můžete zrušit nejpozději 4 hodiny před začátkem termínu.",
+      "confirmationTime": "Potvrzení rezervace obdržíte do 2 hodin od odeslání.",
+      "arrivalTime": "Prosíme, dostavte se 5 minut před začátkem termínu.",
+      "contactInfo": "V případě potíží nás kontaktujte na +420 607 191 088."
+    },
+    "form": {
+      "personalInfo": "Osobní údaje",
+      "name": "Jméno",
+      "namePlaceholder": "Zadejte své jméno",
+      "surname": "Příjmení",
+      "surnamePlaceholder": "Zadejte své příjmení",
+      "phone": "Telefon",
+      "phonePlaceholder": "+420 xxx xxx xxx",
+      "email": "Email",
+      "emailPlaceholder": "vas.email@example.com",
+      "appointmentDetails": "Detaily termínu",
+      "service": "Služba",
+      "servicePlaceholder": "Vyberte službu",
+      "date": "Datum",
+      "datePlaceholder": "Vyberte datum",
+      "time": "Čas",
+      "timePlaceholder": "Vyberte čas",
+      "submitButton": "Rezervovat termín",
+      "submitting": "Odesílání...",
+      "required": "Povinné pole"
+    },
+    "services": [
+      { "value": "kadernictvi", "label": "Kadeřnictví" },
+      { "value": "kosmetika", "label": "Kosmetika" },
+      { "value": "masaze", "label": "Masáže" },
+      { "value": "pedikura", "label": "Pedikúra" },
+      { "value": "lymfodrenaz", "label": "Lymfodrenáž" }
+    ],
+    "schedule": {
+      "monday": "Pondělí: 9:00 - 18:00",
+      "tuesday": "Úterý: 9:00 - 18:00", 
+      "wednesday": "Středa: 9:00 - 18:00",
+      "thursday": "Čtvrtek: 9:00 - 18:00",
+      "friday": "Pátek: 9:00 - 18:00",
+      "saturday": "Sobota: 9:00 - 16:00",
+      "sunday": "Neděle: Zavřeno"
+    },
+    "messages": {
+      "success": "Rezervace byla úspěšně odeslána! Brzy vás budeme kontaktovat.",
+      "error": "Došlo k chybě při odesílání rezervace. Zkuste to prosím znovu.",
+      "invalidDate": "Prosím vyberte platné datum.",
+      "invalidTime": "Prosím vyberte dostupný čas.",
+      "closedDay": "V neděli máme zavřeno. Prosím vyberte jiný den."
+    }
   }
 } 

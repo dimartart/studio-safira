@@ -7,6 +7,7 @@ import Cosmetics from './pages/Cosmetics'
 import Massage from './pages/Massage'
 import Nails from './pages/Nails'
 import Lymphatic from './pages/Lymphatic'
+import Reservation from './pages/ReservationPage'
 import ScrollToTop from './components/ScrollToTop'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/massage" element={<Massage />} />
             <Route path="/nails" element={<Nails />} />
             <Route path="/lymphatic" element={<Lymphatic />} />
+            <Route path="/reservation" element={<Reservation />} />
           </Routes>
         </main>
         <Footer/>
