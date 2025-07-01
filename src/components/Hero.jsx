@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     const { t } = useTranslation();
@@ -25,13 +26,13 @@ const Hero = () => {
                     </p>
                 </header>
                 <nav className="flex flex-col items-center sm:flex-row gap-4 lg:gap-[2rem] pt-0 lg:pt-[1rem] px-4 lg:px-0" role="navigation" aria-label="Hero actions">
-                    <a 
-                        href="#reservation" 
+                    <Link 
+                        to="/reservation" 
                         className="text-white text-[1.7rem] lg:text-xl py-3 lg:py-5 px-4 bg-[#D41C8A] rounded-3xl text-center hover:bg-[#B8156E] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:ring-offset-2"
                         aria-label="Rezervovat termín v Studio Safira"
                     >
                         {t('hero.reservationButton')}
-                    </a>
+                    </Link>
                     <p className="hidden sm:block text-white text-sm lg:text-base py-3 lg:py-5 px-4 rounded-full text-center border border-[#D41C8A]" style={{ boxShadow: "0 2px 4px 0 #D41C8A" }}>
                         {t('hero.promoText')}
                     </p>
