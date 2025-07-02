@@ -9,6 +9,7 @@ import Nails from './pages/Nails'
 import Lymphatic from './pages/Lymphatic'
 import Reservation from './pages/ReservationPage'
 import ScrollToTop from './components/ScrollToTop'
+import Supabase from './components/supabase'
 
 function App() {
   return (
