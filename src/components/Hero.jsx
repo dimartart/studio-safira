@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
     const { t } = useTranslation();
     return(
-        <main className="border-b border-[#D41C8A] relative bg-[#1B191A] mt-6 flex flex-col lg:flex-row px-4 sm:px-6 lg:px-[10%] py-8 md:py-12 lg:py-[4rem] lg:pb-[7rem]">
+        <div className="border-b border-[#D41C8A] relative bg-[#1B191A] flex flex-col lg:flex-row mt-6 px-4 sm:px-6 lg:px-[10%] py-8 md:py-12 lg:py-[4rem] lg:pb-[7rem]">
             <section className="opacity-0 animate-[fadeIn_0.6s_ease-in_forwards] order-2 md:order-1 flex flex-col gap-1 lg:gap-4 items-center lg:items-start justify-center relative w-full lg:w-[50%] text-center lg:text-left">                
                 <div
                     className="hidden md:block text-transparent text-4xl sm:text-5xl md:text-6xl lg:text-[7rem] font-bold absolute top-1 left-0 lg:left-[7%] w-full lg:w-auto"
@@ -69,7 +69,7 @@ const Hero = () => {
                     height="300"
                 />
             </aside>
-        </main>
+        </div>
     )
 }
 

@@ -348,7 +348,7 @@
   "reservation": {
     "title": "Rezervace termínu",
     "warningBanner": {
-      "title": "⚠️ Důležité informace o rezervaci",
+      "title": " Důležité informace o rezervaci",
       "cancelationPolicy": "Rezervaci můžete zrušit nejpozději 4 hodiny před začátkem termínu.",
       "confirmationTime": "Potvrzení rezervace obdržíte do 2 hodin od odeslání.",
       "arrivalTime": "Prosíme, dostavte se 5 minut před začátkem termínu.",
@@ -383,11 +383,7 @@
       { "value": "lymfodrenaz", "label": "Lymfodrenáž" }
     ],
     "schedule": {
-      "monday": "Pondělí: 9:00 - 18:00",
-      "tuesday": "Úterý: 9:00 - 18:00", 
-      "wednesday": "Středa: 9:00 - 18:00",
-      "thursday": "Čtvrtek: 9:00 - 18:00",
-      "friday": "Pátek: 9:00 - 18:00",
+      "workingHours": "Pondělí - Pátek: 9:00 - 18:00",
       "saturday": "Sobota: 9:00 - 16:00",
       "sunday": "Neděle: Zavřeno"
     },
@@ -395,8 +391,7 @@
       "success": "Rezervace byla úspěšně odeslána! Brzy vás budeme kontaktovat.",
       "error": "Došlo k chybě při odesílání rezervace. Zkuste to prosím znovu.",
       "invalidDate": "Prosím vyberte platné datum.",
-      "invalidTime": "Prosím vyberte dostupný čas.",
-      "closedDay": "V neděli máme zavřeno. Prosím vyberte jiný den."
+      "invalidTime": "Prosím vyberte dostupný čas."
     }
   }
 } 
