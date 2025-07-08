@@ -10,7 +10,6 @@ import Lymphatic from './pages/Lymphatic'
 import Reservation from './pages/ReservationPage'
 import ScrollToTop from './components/ScrollToTop'
 import AdminRoute from './pages/AdminRouter'
-import Test from './components/test'
 
 function App() {
   return (
