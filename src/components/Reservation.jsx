@@ -2,12 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
-import { createClient } from "@supabase/supabase-js";
 
-{/* Prepare supabase client for sending data to database */}
-const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
-
-const Reservation = () => {
+const Reservation = ({ supabase }) => {
   
   const { t } = useTranslation()
   const [formData, setFormData] = useState({

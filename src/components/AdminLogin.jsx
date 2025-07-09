@@ -1,8 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
 import React, { useState } from 'react'
-const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
 
-const Login = () => {
+const Login = ({ supabase }) => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 

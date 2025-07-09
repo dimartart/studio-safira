@@ -10,6 +10,9 @@ import Lymphatic from './pages/Lymphatic'
 import Reservation from './pages/ReservationPage'
 import ScrollToTop from './components/ScrollToTop'
 import AdminRoute from './pages/AdminRouter'
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_ANON_KEY);
 
 function App() {
   return (
@@ -25,8 +28,8 @@ function App() {
             <Route path="/massage" element={<Massage />} />
             <Route path="/nails" element={<Nails />} />
             <Route path="/lymphatic" element={<Lymphatic />} />
-            <Route path="/reservation" element={<Reservation />} />
-            <Route path="/admin" element={<AdminRoute />} />
+            <Route path="/reservation" element={<Reservation supabase={supabase} />} />
+            <Route path="/admin" element={<AdminRoute supabase={supabase} />} />
           </Routes>
         </main>
         <Footer/>
