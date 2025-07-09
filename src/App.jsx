@@ -27,7 +27,6 @@ function App() {
             <Route path="/lymphatic" element={<Lymphatic />} />
             <Route path="/reservation" element={<Reservation />} />
             <Route path="/admin" element={<AdminRoute />} />
-            <Route path="/test" element={<Test />} />
           </Routes>
         </main>
         <Footer/>
