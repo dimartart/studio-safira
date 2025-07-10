@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import AdminLogin from "../components/AdminLogin";
 import AdminPanel from "../components/AdminPanel";
+import { supabase } from "../supabaseClient";
 
-export default function AdminRoute({ supabase }) {
+export default function AdminRoute() {
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState(null);
 

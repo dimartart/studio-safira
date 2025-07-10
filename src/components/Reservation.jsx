@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
+import { supabase } from "../supabaseClient";
 
-const Reservation = ({ supabase }) => {
+const Reservation = () => {
   
   const { t } = useTranslation()
   const [formData, setFormData] = useState({
@@ -64,43 +65,51 @@ const Reservation = ({ supabase }) => {
     setIsSubmitting(true)
     setMessage({ type: '', text: '' })
 
-    // Validation
-    if (!formData.name || !formData.surname || !formData.phone || !formData.email || !formData.service || !formData.date || !formData.time) {
-      setMessage({ type: 'error', text: t('reservation.form.required') })
-      setIsSubmitting(false)
-      return
-    }
 
     try {
-      const { data : clientData, error: clientError } = await supabase
-        .from('clients')
-        .insert([
+      const { data: existingClient, error: fetchError } = await supabase
+      .from("clients")
+      .select("id")
+      .eq("email", formData.email)
+      .maybeSingle();
+
+      if (fetchError) throw fetchError;
+
+      let clientId;
+  
+      if (existingClient) {
+        clientId = existingClient.id;
+      }
+      else {
+      const { data : newClient, error: clientError } = await supabase
+        .from("clients")
+        .insert(
           {
             name: formData.name,
-            created_at: new Date().toISOString(),
             surname: formData.surname,
             phone: formData.phone,
             email: formData.email
           }
-        ])
+        )
         .select()
+        .single();
 
-      if (clientError) {
-        throw clientError
+        if (clientError) throw clientError;
+
+        clientId = newClient.id;
       }
 
-      const clientId = clientData[0].id
 
       const { error: reservationError } = await supabase
-      .from('reservation')
-      .insert([
+      .from("reservation")
+      .insert(
         {
           client_id: clientId,
           service: formData.service,
           date: formData.date.toISOString().split('T')[0],
           time: formData.time,
         }
-      ]);
+      );
 
       if (reservationError) {
         throw reservationError
