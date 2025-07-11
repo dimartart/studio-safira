@@ -49,7 +49,7 @@ const ClientReviews = () => {
   );
 
   return (
-    <section className="lg:py-16 py-6 bg-[#1B191A]" ref={ref}>
+    <section className="lg:py-16 py-6 " ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#D41C8A] mb-4">
@@ -64,7 +64,7 @@ const ClientReviews = () => {
           {reviews.map((review, index) => (
             <div
               key={index}
-              className={`bg-[#2A2729] rounded-2xl p-6 border border-[#4D2039] transform transition-all duration-700 ease-out ${
+              className={`bg-[#000000] rounded-2xl p-6 border border-[#4D2039] transform transition-all duration-700 ease-out ${
                 visibleItems.includes(index)
                   ? 'translate-y-0 opacity-100 scale-100'
                   : 'translate-y-8 opacity-0 scale-95'

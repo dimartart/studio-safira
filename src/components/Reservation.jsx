@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import DatePicker from 'react-datepicker'
-import "react-datepicker/dist/react-datepicker.css"
+import { format } from "date-fns";
 import { supabase } from "../supabaseClient";
+import "react-datepicker/dist/react-datepicker.css"
+import emailjs from 'emailjs-com';
 
 const Reservation = () => {
   
   const { t } = useTranslation()
+
   const [formData, setFormData] = useState({
     name: '',
     surname: '',
@@ -16,14 +19,11 @@ const Reservation = () => {
     date: null,
     time: ''
   })
-
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState({ type: '', text: '' })
-
   const isSunday = (date) => {
     return date.getDay() !== 0
   }
-
   // Generate time slots based on schedule
   const generateTimeSlots = (selectedDate) => {
     if (!selectedDate) return []
@@ -100,20 +100,23 @@ const Reservation = () => {
       }
 
 
-      const { error: reservationError } = await supabase
+      const { data: reservation, error: reservationError } = await supabase
       .from("reservation")
       .insert(
         {
           client_id: clientId,
           service: formData.service,
-          date: formData.date.toISOString().split('T')[0],
+          date: format(formData.date, "yyyy-MM-dd"),
           time: formData.time,
         }
-      );
+      ).select()
+      .single();
 
       if (reservationError) {
         throw reservationError
       }
+
+      await sendEmail(formData, reservation.id)
 
       setMessage({ type: 'success', text: t('reservation.messages.success') })
       setFormData({
@@ -133,11 +136,32 @@ const Reservation = () => {
     }
   }
 
+  
+  const sendEmail = (formData, reservationId) => {
+    const templateParams = {
+      to_email: formData.email,
+      to_name: `${formData.name} ${formData.surname}`,
+      service: formData.service,
+      date: formData.date.toLocaleDateString(),
+      time: formData.time,
+      link_cancel: `https://yourdomain.com/cancel/${reservationId}`,
+      link_edit: `https://yourdomain.com/edit/${reservationId}`
+    };
+
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams, 'YOUR_PUBLIC_KEY')
+    .then(() => {
+      console.log('Email sent successfully');
+    })
+    .catch((error) => {
+      console.error('Email send error:', error);
+    });
+  };
+
   const timeSlots = generateTimeSlots(formData.date)
 
   return (
     <>
-      <div className="p-6 pt-12 max-w-4xl mx-auto bg-[#1B191A]">
+      <div className="p-6 pt-12 max-w-4xl mx-auto ">
         <h1 className="text-3xl font-bold text-center mb-8 text-white">
           {t('reservation.title')}
         </h1>
@@ -198,7 +222,7 @@ const Reservation = () => {
                 value={formData.name}
                 onChange={handleInputChange}
                 placeholder={t('reservation.form.namePlaceholder')}
-                className="w-full px-4 py-3 bg-[#1B191A] border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
+                className="w-full px-4 py-3  border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
                 required
               />
             </div>
@@ -213,7 +237,7 @@ const Reservation = () => {
                 value={formData.surname}
                 onChange={handleInputChange}
                 placeholder={t('reservation.form.surnamePlaceholder')}
-                className="w-full px-4 py-3 bg-[#1B191A] border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
+                className="w-full px-4 py-3  border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
                 required
               />
             </div>
@@ -228,7 +252,7 @@ const Reservation = () => {
                 value={formData.phone}
                 onChange={handleInputChange}
                 placeholder={t('reservation.form.phonePlaceholder')}
-                className="w-full px-4 py-3 bg-[#1B191A] border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
+                className="w-full px-4 py-3  border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
                 required
               />
             </div>
@@ -243,7 +267,7 @@ const Reservation = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder={t('reservation.form.emailPlaceholder')}
-                className="w-full px-4 py-3 bg-[#1B191A] border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
+                className="w-full px-4 py-3  border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
                 required
               />
             </div>
@@ -265,7 +289,7 @@ const Reservation = () => {
                 name="service"
                 value={formData.service}
                 onChange={handleInputChange}
-                className="appearance-none w-full px-4 py-3 bg-[#1B191A] border border-[#4D2039] text-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
+                className="appearance-none w-full px-4 py-3  border border-[#4D2039] text-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
                 required
               >
                 <option value="" className="p-4 text-[#a1a1a1]">{t('reservation.form.servicePlaceholder')}</option>
@@ -286,7 +310,7 @@ const Reservation = () => {
                 filterDate={isSunday}
                 minDate={new Date()}
                 placeholderText={t('reservation.form.datePlaceholder')}
-                className="w-full px-4 py-3 bg-[#1B191A] border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
+                className="w-full px-4 py-3  border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
                 dateFormat="dd/MM/yyyy"
                 required
               />
@@ -300,13 +324,13 @@ const Reservation = () => {
                 name="time"
                 value={formData.time}
                 onChange={handleInputChange}
-                className="appearance-none w-full px-4 py-3 bg-[#1B191A] border border-[#4D2039] text-white rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors disabled:opacity-50"
+                className="appearance-none w-full px-4 py-3  border border-[#4D2039] text-white rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors disabled:opacity-50"
                 required
                 disabled={!formData.date}
               >
-                <option value="" className="bg-[#1B191A] text-[#a1a1a1]">{t('reservation.form.timePlaceholder')}</option>
+                <option value="" className=" text-[#a1a1a1]">{t('reservation.form.timePlaceholder')}</option>
                 {timeSlots.map((slot) => (
-                  <option key={slot} value={slot} className=" bg-[#1B191A] text-white">
+                  <option key={slot} value={slot} className="  text-white">
                     {slot}
                   </option>
                 ))}
@@ -329,7 +353,7 @@ const Reservation = () => {
         {message.text && (
           <div className={`mb-6 p-4 rounded-lg border-2 ${
             message.type === 'success' 
-              ? 'bg-gradient-to-r from-[#4D2039] to-[#600222] text-white border-[#D41C8A]' 
+              ? 'bg-gradient-to-r from-[#4d953b] to-[#026024] text-white border-[#D41C8A]' 
               : 'bg-gradient-to-r from-[#600222] to-[#4D2039] text-white border-[#B8156E]'
           }`}>
             {message.text}

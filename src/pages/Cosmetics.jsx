@@ -20,7 +20,7 @@ const Cosmetics = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                     {/* Basic Services */}
-                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className=" p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('cosmetics.basic.title')}
                         </h2>
@@ -46,7 +46,7 @@ const Cosmetics = () => {
                     </div>
 
                     {/* Depilation Services */}
-                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className=" p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('cosmetics.depilation.title')}
                         </h2>
@@ -86,14 +86,14 @@ const Cosmetics = () => {
 
                 <div className="grid grid-cols-1 gap-8">
                     {/* Facial Treatments */}
-                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className=" p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('cosmetics.facials.title')}
                         </h2>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-4">
-                                <div className="bg-[#1B191A] p-4 rounded-lg">
+                                <div className=" p-4 rounded-lg">
                                     <h3 className="text-lg font-semibold text-[#D41C8A] mb-2">{t('cosmetics.facials.complete.title')}</h3>
                                     <p className="text-gray-300 text-sm mb-3">{t('cosmetics.facials.complete.description')}</p>
                                     <div className="flex justify-between items-center">
@@ -102,7 +102,7 @@ const Cosmetics = () => {
                                     </div>
                                 </div>
                                 
-                                <div className="bg-[#1B191A] p-4 rounded-lg">
+                                <div className=" p-4 rounded-lg">
                                     <h3 className="text-lg font-semibold text-[#D41C8A] mb-2">{t('cosmetics.facials.problematic.title')}</h3>
                                     <p className="text-gray-300 text-sm mb-3">{t('cosmetics.facials.problematic.description')}</p>
                                     <div className="flex justify-between items-center">
@@ -113,7 +113,7 @@ const Cosmetics = () => {
                             </div>
                             
                             <div className="space-y-4">
-                                <div className="bg-[#1B191A] p-4 rounded-lg">
+                                <div className=" p-4 rounded-lg">
                                     <h3 className="text-lg font-semibold text-[#D41C8A] mb-2">{t('cosmetics.facials.chocolate.title')}</h3>
                                     <p className="text-gray-300 text-sm mb-3">{t('cosmetics.facials.chocolate.description')}</p>
                                     <div className="flex justify-between items-center">
@@ -122,7 +122,7 @@ const Cosmetics = () => {
                                     </div>
                                 </div>
                                 
-                                <div className="bg-[#1B191A] p-4 rounded-lg">
+                                <div className=" p-4 rounded-lg">
                                     <h3 className="text-lg font-semibold text-[#D41C8A] mb-2">{t('cosmetics.facials.eyeArea.title')}</h3>
                                     <p className="text-gray-300 text-sm mb-3">{t('cosmetics.facials.eyeArea.description')}</p>
                                     <div className="flex justify-between items-center">

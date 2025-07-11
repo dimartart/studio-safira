@@ -19,13 +19,13 @@ const Lymphatic = () => {
                 </div>
 
                 {/* Main Service */}
-                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12  p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-8 text-center">
                         {t('lymphatic.service.title')}
                     </h2>
                     
                     <div className="max-w-2xl mx-auto">
-                        <div className="bg-[#1B191A] p-6 rounded-lg text-center mb-6">
+                        <div className=" p-6 rounded-lg text-center mb-6">
                             <h3 className="text-xl font-semibold text-white mb-3">{t('lymphatic.service.single.title')}</h3>
                             <div className="text-3xl font-bold text-[#D41C8A] mb-2">{t('lymphatic.service.single.price')}</div>
                             <p className="text-gray-300 text-sm">{t('lymphatic.service.single.description')}</p>
@@ -34,19 +34,19 @@ const Lymphatic = () => {
                 </div>
 
                 {/* Package Deals */}
-                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12  p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-8 text-center">
                         {t('lymphatic.packages.title')}
                     </h2>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-[#1B191A] p-6 rounded-lg text-center">
+                        <div className=" p-6 rounded-lg text-center">
                             <h3 className="text-lg font-semibold text-white mb-3">{t('lymphatic.packages.package5.title')}</h3>
                             <div className="text-2xl font-bold text-[#D41C8A] mb-2">{t('lymphatic.packages.package5.price')}</div>
                             <p className="text-gray-300 text-sm">{t('lymphatic.packages.package5.description')}</p>
                         </div>
                         
-                        <div className="bg-[#1B191A] p-6 rounded-lg text-center">
+                        <div className=" p-6 rounded-lg text-center">
                             <h3 className="text-lg font-semibold text-white mb-3">{t('lymphatic.packages.package10.title')}</h3>
                             <div className="text-2xl font-bold text-[#D41C8A] mb-2">{t('lymphatic.packages.package10.price')}</div>
                             <p className="text-gray-300 text-sm">{t('lymphatic.packages.package10.description')}</p>
@@ -55,13 +55,13 @@ const Lymphatic = () => {
                 </div>
 
                 {/* Additional Service */}
-                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12  p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-8 text-center">
                         {t('lymphatic.lipolysis.title')}
                     </h2>
                     
                     <div className="max-w-2xl mx-auto">
-                        <div className="bg-[#1B191A] p-6 rounded-lg text-center">
+                        <div className=" p-6 rounded-lg text-center">
                             <h3 className="text-xl font-semibold text-white mb-3">{t('lymphatic.lipolysis.service')}</h3>
                             <div className="text-3xl font-bold text-[#D41C8A] mb-2">{t('lymphatic.lipolysis.price')}</div>
                             <p className="text-gray-300 text-sm">{t('lymphatic.lipolysis.description')}</p>

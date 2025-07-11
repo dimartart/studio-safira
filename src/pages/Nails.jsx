@@ -19,7 +19,7 @@ const Nails = () => {
                 </div>
 
                 {/* Description Section */}
-                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12  p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <div className="text-center">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6">
                             {t('nails.description.title')}
@@ -37,7 +37,7 @@ const Nails = () => {
                 </div>
 
                 {/* Services Types */}
-                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12  p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                         {t('nails.types.title')}
                     </h2>
@@ -63,7 +63,7 @@ const Nails = () => {
                 {/* Pricing Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                     {/* Standard Services */}
-                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className=" p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('nails.pricing.standard.title')}
                         </h2>
@@ -97,7 +97,7 @@ const Nails = () => {
                     </div>
 
                     {/* Specialized Services */}
-                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className=" p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('nails.pricing.specialized.title')}
                         </h2>
@@ -123,7 +123,7 @@ const Nails = () => {
                                 <span className="text-white text-sm md:text-base">{t('nails.pricing.specialized.vitamins')}</span>
                                 <span className="text-[#D41C8A] font-semibold">{t('nails.pricing.specialized.vitaminsPrice')}</span>
                             </div>
-                            <div className="bg-[#1B191A] p-3 rounded-lg mt-4">
+                            <div className=" p-3 rounded-lg mt-4">
                                 <div className="flex justify-between items-center mb-2">
                                     <span className="text-white text-sm md:text-base font-medium">{t('nails.pricing.specialized.mobile')}</span>
                                     <span className="text-[#D41C8A] font-semibold">{t('nails.pricing.specialized.mobilePrice')}</span>
@@ -135,7 +135,7 @@ const Nails = () => {
                 </div>
 
                 {/* Additional Services */}
-                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12  p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                         {t('nails.additional.title')}
                     </h2>

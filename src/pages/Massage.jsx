@@ -19,7 +19,7 @@ const Massage = () => {
                 </div>
 
                 {/* Description Section */}
-                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12  p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <div className="text-center">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6">
                             {t('massage.description.title')}
@@ -48,20 +48,20 @@ const Massage = () => {
                         </h2>
                         
                         <div className="space-y-4">
-                            <div className="bg-[#1B191A] p-4 rounded-lg">
+                            <div className=" p-4 rounded-lg">
                                 <div className="flex justify-between items-center">
                                     <span className="text-white text-sm md:text-base font-medium">{t('massage.therapeutic.sports')}</span>
                                     <span className="text-[#D41C8A] font-semibold">{t('massage.therapeutic.sportsPrice')}</span>
                                 </div>
                             </div>
-                            <div className="bg-[#1B191A] p-4 rounded-lg">
+                            <div className=" p-4 rounded-lg">
                                 <div className="flex justify-between items-center mb-2">
                                     <span className="text-white text-sm md:text-base font-medium">{t('massage.therapeutic.reflexFull')}</span>
                                     <span className="text-[#D41C8A] font-semibold">{t('massage.therapeutic.reflexFullPrice')}</span>
                                 </div>
                                 <span className="text-gray-400 text-xs">{t('massage.therapeutic.reflexFullDuration')}</span>
                             </div>
-                            <div className="bg-[#1B191A] p-4 rounded-lg">
+                            <div className=" p-4 rounded-lg">
                                 <div className="flex justify-between items-center mb-2">
                                     <span className="text-white text-sm md:text-base font-medium">{t('massage.therapeutic.reflexFoot')}</span>
                                     <span className="text-[#D41C8A] font-semibold">{t('massage.therapeutic.reflexFootPrice')}</span>
@@ -72,27 +72,27 @@ const Massage = () => {
                     </div>
 
                     {/* Alternative Therapies */}
-                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className=" p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('massage.alternative.title')}
                         </h2>
                         
                         <div className="space-y-4">
-                            <div className="bg-[#1B191A] p-4 rounded-lg">
+                            <div className=" p-4 rounded-lg">
                                 <div className="flex justify-between items-center mb-2">
                                     <span className="text-white text-sm md:text-base font-medium">{t('massage.alternative.assyrian')}</span>
                                     <span className="text-[#D41C8A] font-semibold">{t('massage.alternative.assyrianPrice')}</span>
                                 </div>
                                 <span className="text-gray-400 text-xs">{t('massage.alternative.assyrianDuration')}</span>
                             </div>
-                            <div className="bg-[#1B191A] p-4 rounded-lg">
+                            <div className=" p-4 rounded-lg">
                                 <div className="flex justify-between items-center mb-2">
                                     <span className="text-white text-sm md:text-base font-medium">{t('massage.alternative.crystalMassage')}</span>
                                     <span className="text-[#D41C8A] font-semibold">{t('massage.alternative.crystalMassagePrice')}</span>
                                 </div>
                                 <span className="text-gray-400 text-xs">{t('massage.alternative.crystalMassageDuration')}</span>
                             </div>
-                            <div className="bg-[#1B191A] p-4 rounded-lg">
+                            <div className=" p-4 rounded-lg">
                                 <div className="flex justify-between items-center">
                                     <span className="text-white text-sm md:text-base font-medium">{t('massage.alternative.crystalTherapy')}</span>
                                     <span className="text-[#D41C8A] font-semibold">{t('massage.alternative.crystalTherapyPrice')}</span>
@@ -103,7 +103,7 @@ const Massage = () => {
                 </div>
 
                 {/* Services List */}
-                <div className="mb-12 bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                <div className="mb-12  p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                     <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                         {t('massage.services.title')}
                     </h2>

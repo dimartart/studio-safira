@@ -24,5 +24,5 @@ export default function AdminRoute() {
 
   if (loading) return <p>Loading...</p>;
 
-  return session ? <AdminPanel supabase={supabase} /> : <AdminLogin supabase={supabase} />;
+  return session ? <AdminPanel /> : <AdminLogin />;
 }

@@ -47,7 +47,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-[#1B191A] border-b-2 border-[#D41C8A] fixed top-0 z-10 w-full">
+        <nav className="bg-gradient-to-br from-gray-900 via-black to-purple-900 border-b-2 border-[#D41C8A] fixed top-0 z-10 w-full">
             <div className="max-w-0xl md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div>
@@ -81,7 +81,7 @@ const Navbar = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                                 </svg>
                                 {isServicesOpen && (
-                                    <div className="z-100 flex flex-col gap-2 absolute top-8 left-0 w-full bg-[#1B191A] border-2 border-[#D41C8A] rounded-md p-2">
+                                    <div className="z-100 flex flex-col gap-2 absolute top-8 left-0 w-full bg-black border-2 border-[#D41C8A] rounded-md p-2">
                                         {services.map((service, index) => (
                                             <Link to={service.url} key={index} className="p-1 rounded-md hover:bg-[#D41C8A] transition-colors duration-200
                                             opacity-0 animate-[fadeIn_0.6s_ease-in_forwards]"

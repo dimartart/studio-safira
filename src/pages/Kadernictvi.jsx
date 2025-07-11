@@ -20,7 +20,7 @@ const Kadernictvi = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                     {/* Women's Services */}
-                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className=" p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('kadernictvi.women.title')}
                         </h2>
@@ -54,7 +54,7 @@ const Kadernictvi = () => {
                     </div>
 
                     {/* Men's Services */}
-                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className=" p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('kadernictvi.men.title')}
                         </h2>
@@ -78,7 +78,7 @@ const Kadernictvi = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* Children's Services */}
-                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className=" p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('kadernictvi.children.title')}
                         </h2>
@@ -96,7 +96,7 @@ const Kadernictvi = () => {
                     </div>
 
                     {/* Seniors Services */}
-                    <div className="bg-[#2A2528] p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
+                    <div className=" p-8 rounded-2xl shadow-2xl border border-[#D41C8A]/20">
                         <h2 className="text-2xl md:text-3xl font-bold text-[#D41C8A] mb-6 text-center">
                             {t('kadernictvi.seniors.title')}
                         </h2>

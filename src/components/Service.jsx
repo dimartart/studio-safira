@@ -5,7 +5,7 @@ const Service = () => {
     const { t } = useTranslation();
     
     return (
-        <section className="bg-[#1B191A] px-4 sm:px-6 lg:px-[10%] py-8" id="services" aria-labelledby="services-heading">
+        <section className="px-4 sm:px-6 lg:px-[10%] py-8" id="services" aria-labelledby="services-heading">
             <header className="text-center mb-8">
                 <h2 id="services-heading" className="text-[#D41C8A] text-2xl sm:text-3xl font-bold uppercase">
                     {t('navbar.services')}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
     const { t } = useTranslation();
     return(
-        <div className="border-b border-[#D41C8A] relative bg-[#1B191A] flex flex-col lg:flex-row mt-6 px-4 sm:px-6 lg:px-[10%] py-8 md:py-12 lg:py-[4rem] lg:pb-[7rem]">
+        <div className="border-b border-[#D41C8A] relative flex flex-col lg:flex-row mt-6 px-4 sm:px-6 lg:px-[10%] py-8 md:py-12 lg:py-[4rem] lg:pb-[7rem]">
             <section className="opacity-0 animate-[fadeIn_0.6s_ease-in_forwards] order-2 md:order-1 flex flex-col gap-1 lg:gap-4 items-center lg:items-start justify-center relative w-full lg:w-[50%] text-center lg:text-left">                
                 <div
                     className="hidden md:block text-transparent text-4xl sm:text-5xl md:text-6xl lg:text-[7rem] font-bold absolute top-1 left-0 lg:left-[7%] w-full lg:w-auto"
@@ -28,12 +28,12 @@ const Hero = () => {
                 <nav className="flex flex-col items-center sm:flex-row gap-4 lg:gap-[2rem] pt-0 lg:pt-[1rem] px-4 lg:px-0" role="navigation" aria-label="Hero actions">
                     <Link 
                         to="/reservation" 
-                        className="text-white text-[1.7rem] lg:text-xl py-3 lg:py-5 px-4 bg-[#D41C8A] rounded-3xl text-center hover:bg-[#B8156E] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:ring-offset-2"
+                        className="text-white text-[1.7rem] py-3 lg:py-3 px-4 bg-[#D41C8A] rounded-3xl text-center hover:bg-[#B8156E] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:ring-offset-2"
                         aria-label="Rezervovat termín v Studio Safira"
                     >   
                         {t('hero.reservationButton')}
                     </Link>
-                    <p className="hidden sm:block text-white text-sm lg:text-base py-3 lg:py-5 px-4 rounded-full text-center border border-[#D41C8A]" style={{ boxShadow: "0 2px 4px 0 #D41C8A" }}>
+                    <p className="hidden sm:block text-white text-sm py-3 lg:py-5 px-4 rounded-full text-center border border-[#D41C8A]" style={{ boxShadow: "0 2px 4px 0 #D41C8A" }}>
                         {t('hero.promoText')}
                     </p>
                 </nav>

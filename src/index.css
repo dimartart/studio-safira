@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  background-color: #1B191A;
+  background: linear-gradient(to bottom right, #010203, #000000, #581c87);
 }
 
 

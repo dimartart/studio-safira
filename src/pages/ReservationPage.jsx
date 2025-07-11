@@ -4,7 +4,7 @@ const ReservationPage = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br bg-[#1B191A] py-12">
+      <div className="min-h-screen bg-gradient-to-br  py-12">
         <Reservation />
       </div>
     </>

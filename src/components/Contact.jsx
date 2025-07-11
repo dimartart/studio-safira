@@ -51,7 +51,7 @@ const Contact = () => {
     ];
 
     return (
-        <div id="contact" className="bg-[#1B191A] py-16 px-4 sm:px-6 lg:px-[10%]">
+        <div id="contact" className=" py-16 px-4 sm:px-6 lg:px-[10%]">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12">
