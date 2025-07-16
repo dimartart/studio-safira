@@ -8,7 +8,7 @@ const CancelReservation = () => {
                 await supabase
                 .from('reservations')
                 .delete()
-                .eq('modification_token', id);
+                .eq('modification_token', modification_token);
                 alert('Reservation cancelled.');
                 }}>
                 Cancel reservation
