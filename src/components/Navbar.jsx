@@ -47,7 +47,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="bg-gradient-to-br from-gray-900 via-black to-purple-900 border-b-2 border-[#D41C8A] fixed top-0 z-10 w-full">
+        <nav className="bg-gradient-to-br from-gray-900 via-black border-b-2 border-[#D41C8A] fixed top-0 z-10 w-full">
             <div className="max-w-0xl md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div>
@@ -158,7 +158,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Menu */}
-                <div className={`fixed md:hidden left-0 right-0 top-16.5 bottom-0 z-40 transition-all duration-500 ease-in-out ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`} style={{ background: 'rgba(27, 25, 26, 0.98)' }}>
+                <div className={`fixed bg-black md:hidden left-0 right-0 top-16.5 bottom-0 z-40 transition-all duration-500 ease-in-out ${isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
                     <div className="flex flex-col h-full">
                         <div className="text-2xl text-white flex-1 flex flex-col justify-center items-center space-y-8 px-8">
                             <Link to="/" className="hover:text-gray-300 transition-colors duration-200"

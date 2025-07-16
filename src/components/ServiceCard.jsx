@@ -47,7 +47,7 @@ const ServiceCard = () => {
 
     return (
         <div role="grid" className="flex flex-col gap-4 lg:gap-8" aria-label={t('navbar.services')}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6" role="row">
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-6" role="row">
                 {services3.map((service, index) => (
                     <article key={index} className="service-card" role="gridcell">
                         <div className="relative flex items-center justify-center pb-4 bg-center bg-cover min-h-48 sm:min-h-56 lg:min-h-72 rounded-2xl overflow-hidden"

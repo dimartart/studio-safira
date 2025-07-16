@@ -28,17 +28,10 @@ const Footer = () => {
     ]
 
     return (
-        <footer className="bg-gradient-to-br from-gray-900 via-black to-purple-900 text-white relative overflow-hidden">
-            {/* Decorative background elements */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-96 h-96 bg-fuchsia-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
-                <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
-            </div>
+        <footer className="bg-gradient-to-br from-gray-900 via-black to-purple-900 text-white">
             
-            <div className="relative z-10">
-                {/* Main footer content */}
+            <div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    {/* Top section with logo and brand */}
                     <div className="text-center mb-12">
                         <div className="flex items-center justify-center mb-6">
                             <img 
@@ -47,7 +40,7 @@ const Footer = () => {
                                 className="h-16 w-16 mr-4 rounded-full shadow-lg ring-2 ring-fuchsia-400/30"
                             />
                             <div>
-                                <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-fuchsia-400 to-purple-400 bg-clip-text text-transparent">
+                                <h2 className="text-3xl lg:text-4xl font-bold text-[#D41C8A]">
                                     Studio Safira
                                 </h2>
                                 <p className="text-gray-300 text-sm lg:text-base mt-1">
@@ -55,14 +48,13 @@ const Footer = () => {
                                 </p>
                             </div>
                         </div>
-                        <div className="w-24 h-1 bg-gradient-to-r from-fuchsia-400 to-purple-400 mx-auto rounded-full"></div>
                     </div>
 
                     {/* Main footer grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                         {/* Contact Information */}
                         <div className="text-center md:text-left">
-                            <h3 className="text-xl font-bold mb-6 text-fuchsia-400 flex items-center justify-center md:justify-start">
+                            <h3 className="text-xl font-bold mb-6 text-[#D41C8A] flex items-center justify-center md:justify-start">
                                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
@@ -71,20 +63,20 @@ const Footer = () => {
                             </h3>
                             <div className="space-y-3">
                                 <div className="flex items-center justify-center md:justify-start">
-                                    <svg className="w-4 h-4 mr-3 text-fuchsia-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg className="w-4 h-4 mr-3 text-[#D41C8A]" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                                     </svg>
                                     <span className="text-gray-300">+420 607 191 088</span>
                                 </div>
                                 <div className="flex items-center justify-center md:justify-start">
-                                    <svg className="w-4 h-4 mr-3 text-fuchsia-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg className="w-4 h-4 mr-3 text-[#D41C8A]" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                                     </svg>
                                     <span className="text-gray-300">studiosafira@seznam.cz</span>
                                 </div>
                                 <div className="flex items-start justify-center md:justify-start">
-                                    <svg className="w-4 h-4 mr-3 text-fuchsia-400 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg className="w-4 h-4 mr-3 text-[#D41C8A] mt-1" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
                                     </svg>
                                     <div className="text-gray-300">
@@ -93,7 +85,7 @@ const Footer = () => {
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-center md:justify-start">
-                                    <svg className="w-4 h-4 mr-3 text-fuchsia-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg className="w-4 h-4 mr-3 text-[#D41C8A]" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                                     </svg>
@@ -102,9 +94,8 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        {/* Quick Links */}
                         <div className="text-center md:text-left">
-                            <h3 className="text-xl font-bold mb-6 text-fuchsia-400 flex items-center justify-center md:justify-start">
+                            <h3 className="text-xl font-bold mb-6 text-[#D41C8A] flex items-center justify-center md:justify-start">
                                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"/>
                                 </svg>
@@ -113,7 +104,7 @@ const Footer = () => {
                             <div className="space-y-3">
                                 <Link 
                                     to="/" 
-                                    className="block text-gray-300 hover:text-fuchsia-400 transition-all duration-300 hover:translate-x-1 transform"
+                                    className="block text-gray-300 hover:text-[#D41C8A] transition-all duration-300 hover:translate-x-1 transform"
                                 >
                                     {t('navbar.home')}
                                 </Link>
@@ -121,7 +112,7 @@ const Footer = () => {
                                     <Link 
                                         to={service.url} 
                                         key={index} 
-                                        className="block text-gray-300 hover:text-fuchsia-400 transition-all duration-300 hover:translate-x-1 transform"
+                                        className="block text-gray-300 hover:text-[#D41C8A] transition-all duration-300 hover:translate-x-1 transform"
                                     >
                                         {t(service.nameKey)}
                                     </Link>
@@ -129,41 +120,8 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        {/* Services highlight */}
                         <div className="text-center md:text-left">
-                            <h3 className="text-xl font-bold mb-6 text-fuchsia-400 flex items-center justify-center md:justify-start">
-                                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"/>
-                                </svg>
-                                Our Services
-                            </h3>
-                            <div className="space-y-3 text-gray-300">
-                                <div className="flex items-center justify-center md:justify-start">
-                                    <span className="w-2 h-2 bg-fuchsia-400 rounded-full mr-3"></span>
-                                    Hair Styling & Care
-                                </div>
-                                <div className="flex items-center justify-center md:justify-start">
-                                    <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                                    Professional Cosmetics
-                                </div>
-                                <div className="flex items-center justify-center md:justify-start">
-                                    <span className="w-2 h-2 bg-pink-400 rounded-full mr-3"></span>
-                                    Relaxation Massage
-                                </div>
-                                <div className="flex items-center justify-center md:justify-start">
-                                    <span className="w-2 h-2 bg-fuchsia-400 rounded-full mr-3"></span>
-                                    Nail Care & Art
-                                </div>
-                                <div className="flex items-center justify-center md:justify-start">
-                                    <span className="w-2 h-2 bg-purple-400 rounded-full mr-3"></span>
-                                    Lymphatic Drainage
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Social Media & Newsletter */}
-                        <div className="text-center md:text-left">
-                            <h3 className="text-xl font-bold mb-6 text-fuchsia-400 flex items-center justify-center md:justify-start">
+                            <h3 className="text-xl font-bold mb-6 text-[#D41C8A] flex items-center justify-center md:justify-start">
                                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z" clipRule="evenodd"/>
                                 </svg>
@@ -179,21 +137,6 @@ const Footer = () => {
                                     </svg>
                                     Facebook
                                 </a>
-                                
-                                {/* Newsletter signup */}
-                                <div className="mt-6">
-                                    <p className="text-gray-300 text-sm mb-3">Stay updated with our latest news</p>
-                                    <div className="flex flex-col sm:flex-row gap-2">
-                                        <input 
-                                            type="email" 
-                                            placeholder="Your email"
-                                            className="px-3 py-2 bg-gray-800 text-white rounded-lg border border-gray-700 focus:border-fuchsia-400 focus:outline-none flex-1"
-                                        />
-                                        <button className="px-4 py-2 bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-600 hover:to-purple-700 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm font-medium">
-                                            Subscribe
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -207,9 +150,9 @@ const Footer = () => {
                                 &copy; {new Date().getFullYear()} Studio Safira. All rights reserved.
                             </p>
                             <div className="flex space-x-6 text-sm">
-                                <a href="#" className="text-gray-400 hover:text-fuchsia-400 transition-colors">Privacy Policy</a>
-                                <a href="#" className="text-gray-400 hover:text-fuchsia-400 transition-colors">Terms of Service</a>
-                                <a href="#" className="text-gray-400 hover:text-fuchsia-400 transition-colors">Cookie Policy</a>
+                                <a href="#" className="text-gray-400 hover:text-[#D41C8A] transition-colors">Privacy Policy</a>
+                                <a href="#" className="text-gray-400 hover:text-[#D41C8A] transition-colors">Terms of Service</a>
+                                <a href="#" className="text-gray-400 hover:text-[#D41C8A] transition-colors">Cookie Policy</a>
                             </div>
                         </div>
                     </div>

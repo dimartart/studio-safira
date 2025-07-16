@@ -6,6 +6,7 @@ import { supabase } from "../supabaseClient";
 import "react-datepicker/dist/react-datepicker.css"
 import emailjs from 'emailjs-com';
 
+
 const Reservation = () => {
   
   const { t } = useTranslation()
@@ -17,7 +18,8 @@ const Reservation = () => {
     email: '',
     service: '',
     date: null,
-    time: ''
+    time: '',
+    modification_token: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState({ type: '', text: '' })
@@ -65,7 +67,7 @@ const Reservation = () => {
     setIsSubmitting(true)
     setMessage({ type: '', text: '' })
 
-
+    
     try {
       const { data: existingClient, error: fetchError } = await supabase
       .from("clients")
@@ -99,6 +101,7 @@ const Reservation = () => {
         clientId = newClient.id;
       }
 
+      formData.modification_token = crypto.randomUUID()
 
       const { data: reservation, error: reservationError } = await supabase
       .from("reservation")
@@ -108,6 +111,7 @@ const Reservation = () => {
           service: formData.service,
           date: format(formData.date, "yyyy-MM-dd"),
           time: formData.time,
+          modification_token: formData.modification_token
         }
       ).select()
       .single();
@@ -126,7 +130,8 @@ const Reservation = () => {
         email: '',
         service: '',
         date: null,
-        time: ''
+        time: '',
+        modification_token: ''
       })
     } catch (error) {
       console.error('Error submitting reservation:', error)
@@ -144,11 +149,15 @@ const Reservation = () => {
       service: formData.service,
       date: formData.date.toLocaleDateString(),
       time: formData.time,
-      link_cancel: `https://yourdomain.com/cancel/${reservationId}`,
-      link_edit: `https://yourdomain.com/edit/${reservationId}`
+      link_cancel: `https://studio-safira.vercel.app/cancel/${formData.modification_token}`,
+      link_edit: `https://studio-safira.vercel.app/edit/${formData.modification_token}`
     };
 
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams, 'YOUR_PUBLIC_KEY')
+    const serviceId = String(import.meta.env.VITE_SERVICE_ID)
+    const templateId = String(import.meta.env.VITE_TEMPLATE_ID)
+    const publicKey = String(import.meta.env.VITE_PUBLIC_KEY)
+
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
     .then(() => {
       console.log('Email sent successfully');
     })
@@ -330,7 +339,7 @@ const Reservation = () => {
               >
                 <option value="" className=" text-[#a1a1a1]">{t('reservation.form.timePlaceholder')}</option>
                 {timeSlots.map((slot) => (
-                  <option key={slot} value={slot} className="  text-white">
+                  <option key={slot} value={slot} className="  text-black">
                     {slot}
                   </option>
                 ))}

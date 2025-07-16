@@ -9,7 +9,9 @@ import Nails from './pages/Nails'
 import Lymphatic from './pages/Lymphatic'
 import Reservation from './pages/ReservationPage'
 import ScrollToTop from './components/ScrollToTop'
-import AdminRoute from './pages/AdminRouter'  
+import AdminRoute from './pages/AdminRouter' 
+import CancelReservation from './pages/CancelReservation' 
+import EditReservation from './pages/EditReservation' 
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
             <Route path="/lymphatic" element={<Lymphatic />} />
             <Route path="/reservation" element={<Reservation />} />
             <Route path="/admin" element={<AdminRoute />} />
+            <Route path="/cancel/:id" element={<CancelReservation />} />
+            <Route path="/edit/:id" element={<EditReservation />} />
           </Routes>
         </main>
         <Footer/>
