@@ -29,8 +29,8 @@ function App() {
             <Route path="/lymphatic" element={<Lymphatic />} />
             <Route path="/reservation" element={<Reservation />} />
             <Route path="/admin" element={<AdminRoute />} />
-            <Route path="/cancel/:id" element={<CancelReservation />} />
-            <Route path="/edit/:id" element={<EditReservation />} />
+            <Route path="/cancel/:modification_token" element={<CancelReservation />} />
+            <Route path="/edit/:modification_token" element={<EditReservation />} />
           </Routes>
         </main>
         <Footer/>
