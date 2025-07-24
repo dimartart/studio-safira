@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from "../supabaseClient";
+// import { supabase } from "../lib/supabaseClient";   
 
 
 const AdminPanel = () => {
@@ -61,7 +61,7 @@ const AdminPanel = () => {
 
         let clientIds = [];
 
-        let query = supabase.from("reservation").select(`
+        let query = supabase.from("reservations").select(`
             id,
             date,
             time,
@@ -70,7 +70,6 @@ const AdminPanel = () => {
             clients (name, surname, phone, email, id)
             `);
 
-        // Filter by name and surname, get all clients ids
         if (filters.name || filters.surname) {
             const { data: clients, error: clientsError } = await supabase
                 .from("clients")
@@ -149,7 +148,7 @@ const AdminPanel = () => {
         try {
             // Update reservation table
             const { error: reservationError } = await supabase
-                .from('reservation')
+                .from('reservations')
                 .update({
                     service: editForm.service,
                     date: editForm.date,
@@ -187,7 +186,7 @@ const AdminPanel = () => {
 
     const handleDeleteReservation = async (id) => {
         console.log("reservation id", id);
-        const { error } = await supabase.from('reservation').delete().eq('id', id);
+        const { error } = await supabase.from('reservations').delete().eq('id', id);
         if (error) throw error;
         window.location.reload();    
     };

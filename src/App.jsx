@@ -10,8 +10,8 @@ import Lymphatic from './pages/Lymphatic'
 import Reservation from './pages/ReservationPage'
 import ScrollToTop from './components/ScrollToTop'
 import AdminRoute from './pages/AdminRouter' 
-import CancelReservation from './pages/CancelReservation' 
 import EditReservation from './pages/EditReservation' 
+import DateTimeSelector from './components/DateTimeSelector'
 
 function App() {
   return (
@@ -29,8 +29,8 @@ function App() {
             <Route path="/lymphatic" element={<Lymphatic />} />
             <Route path="/reservation" element={<Reservation />} />
             <Route path="/admin" element={<AdminRoute />} />
-            <Route path="/cancel/:modification_token" element={<CancelReservation />} />
             <Route path="/edit/:modification_token" element={<EditReservation />} />
+            <Route path="/date-time-selector" element={<DateTimeSelector />} />
           </Routes>
         </main>
         <Footer/>

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import DatePicker from 'react-datepicker'
 import { format } from "date-fns";
-import { supabase } from "../supabaseClient";
 import "react-datepicker/dist/react-datepicker.css"
 import emailjs from 'emailjs-com';
+import { createReservationWithClient } from '../lib/reservation';
 
 
 const Reservation = () => {
@@ -18,33 +18,14 @@ const Reservation = () => {
     email: '',
     service: '',
     date: null,
-    time: '',
+    time_end: null,
+    time_start: null,
     modification_token: ''
   })
+
   const [isSubmitting, setIsSubmitting] = useState(false)
+
   const [message, setMessage] = useState({ type: '', text: '' })
-  const isSunday = (date) => {
-    return date.getDay() !== 0
-  }
-  // Generate time slots based on schedule
-  const generateTimeSlots = (selectedDate) => {
-    if (!selectedDate) return []
-    
-    const day = selectedDate.getDay() // 0 = Sunday, 1 = Monday, etc.
-    const slots = []
-  
-    
-    // Monday to Friday: 9:00 - 18:00
-    // Saturday: 9:00 - 16:00
-    const endHour = day === 6 ? 16 : 18
-    
-    for (let hour = 9; hour < endHour; hour++) {
-      slots.push(`${hour.toString().padStart(2, '0')}:00`)
-      slots.push(`${hour.toString().padStart(2, '0')}:30`)
-    }
-    
-    return slots
-  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -54,89 +35,20 @@ const Reservation = () => {
     }))
   }
 
-  const handleDateChange = (date) => {
-    setFormData(prev => ({
-      ...prev,
-      date: date,
-      time: '' // Reset time when date changes
-    }))
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
     setMessage({ type: '', text: '' })
 
-    
     try {
-      const { data: existingClient, error: fetchError } = await supabase
-      .from("clients")
-      .select("id")
-      .eq("email", formData.email)
-      .maybeSingle();
-
-      if (fetchError) throw fetchError;
-
-      let clientId;
-  
-      if (existingClient) {
-        clientId = existingClient.id;
-      }
-      else {
-      const { data : newClient, error: clientError } = await supabase
-        .from("clients")
-        .insert(
-          {
-            name: formData.name,
-            surname: formData.surname,
-            phone: formData.phone,
-            email: formData.email
-          }
-        )
-        .select()
-        .single();
-
-        if (clientError) throw clientError;
-
-        clientId = newClient.id;
-      }
-
-      formData.modification_token = crypto.randomUUID()
-
-      const { data: reservation, error: reservationError } = await supabase
-      .from("reservation")
-      .insert(
-        {
-          client_id: clientId,
-          service: formData.service,
-          date: format(formData.date, "yyyy-MM-dd"),
-          time: formData.time,
-          modification_token: formData.modification_token
-        }
-      ).select()
-      .single();
-
-      if (reservationError) {
-        throw reservationError
-      }
-
-      await sendEmail(formData, reservation.id)
-
+      const reservation = await createReservationWithClient(formData)
       setMessage({ type: 'success', text: t('reservation.messages.success') })
-      setFormData({
-        name: '',
-        surname: '',
-        phone: '',
-        email: '',
-        service: '',
-        date: null,
-        time: '',
-        modification_token: ''
-      })
+      // sendEmail(formData, reservation.client_id)
     } catch (error) {
-      console.error('Error submitting reservation:', error)
+      console.error('Error creating reservation:', error)
       setMessage({ type: 'error', text: t('reservation.messages.error') })
-    } finally {
+    }
+    finally {
       setIsSubmitting(false)
     }
   }
@@ -165,8 +77,6 @@ const Reservation = () => {
       console.error('Email send error:', error);
     });
   };
-
-  const timeSlots = generateTimeSlots(formData.date)
 
   return (
     <>
@@ -279,71 +189,6 @@ const Reservation = () => {
                 className="w-full px-4 py-3  border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
                 required
               />
-            </div>
-          </div>
-        </div>
-
-        {/* Appointment Details */}
-        <div className="p-6 rounded-lg border border-[#D41C8A] shadow-lg">
-          <h3 className="text-xl font-semibold mb-4 text-white">
-            {t('reservation.form.appointmentDetails')}
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-              <label htmlFor="service" className="block text-sm font-medium text-white mb-2">
-                {t('reservation.form.service')} *
-              </label>
-              <select
-                id="service"
-                name="service"
-                value={formData.service}
-                onChange={handleInputChange}
-                className="appearance-none w-full px-4 py-3  border border-[#4D2039] text-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
-                required
-              >
-                <option value="" className="p-4 text-[#a1a1a1]">{t('reservation.form.servicePlaceholder')}</option>
-                {t('reservation.services', { returnObjects: true }).map((service) => (
-                  <option key={service.value} value={service.value} className="p-4 text-[#a1a1a1]">
-                    {service.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label htmlFor="date" className="block text-sm font-medium text-white mb-2">
-                {t('reservation.form.date')} *
-              </label>
-              <DatePicker
-                selected={formData.date}
-                onChange={handleDateChange}
-                filterDate={isSunday}
-                minDate={new Date()}
-                placeholderText={t('reservation.form.datePlaceholder')}
-                className="w-full px-4 py-3  border border-[#4D2039] text-white placeholder-[#a1a1a1] rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors"
-                dateFormat="dd/MM/yyyy"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="time" className="block text-sm font-medium text-white mb-2">
-                {t('reservation.form.time')} *
-              </label>
-              <select
-                id="time"
-                name="time"
-                value={formData.time}
-                onChange={handleInputChange}
-                className="appearance-none w-full px-4 py-3  border border-[#4D2039] text-white rounded-lg focus:ring-2 focus:ring-[#D41C8A] focus:border-[#D41C8A] transition-colors disabled:opacity-50"
-                required
-                disabled={!formData.date}
-              >
-                <option value="" className=" text-[#a1a1a1]">{t('reservation.form.timePlaceholder')}</option>
-                {timeSlots.map((slot) => (
-                  <option key={slot} value={slot} className="  text-black">
-                    {slot}
-                  </option>
-                ))}
-              </select>
             </div>
           </div>
         </div>
