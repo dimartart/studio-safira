@@ -11,7 +11,7 @@ import { format, addMinutes } from 'date-fns';
  */
 
 export async function createReservationWithClient(formData) {
-  // 1. Найти или создать клиента
+  
   const { data: existingClient, error: fetchError } = await supabase
     .from("clients")
     .select("id")

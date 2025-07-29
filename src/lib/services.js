@@ -1,8 +1,16 @@
-export const serviceDurations = {
+export const services = {
+    massage: "massage",
+    nails: "nails",
+    lymphatic: "lymphatic",
+    haircut: "haircut",
+    cosmetics: "cosmetics",
+};
+
+export const servicesDuration = {
     massage: 60,
     nails: 30,
     lymphatic: 60,
-    haircut: 45,
+    haircut: 60,
     cosmetics: 60,
 };
 
