@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import DatePicker from 'react-datepicker'
 import { format } from "date-fns";
-import "react-datepicker/dist/react-datepicker.css"
 import emailjs from 'emailjs-com';
+import DateTimeSelector from './DateTimeSelector'
 import { createReservationWithClient } from '../lib/reservation';
 
 
@@ -52,7 +52,6 @@ const Reservation = () => {
       setIsSubmitting(false)
     }
   }
-
   
   const sendEmail = (formData, reservationId) => {
     const templateParams = {
@@ -192,6 +191,8 @@ const Reservation = () => {
             </div>
           </div>
         </div>
+
+        <DateTimeSelector value={formData.date} onChange={handleInputChange} />
 
         {/* Submit Button */}
         <div className="text-center">

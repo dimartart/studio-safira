@@ -10,23 +10,34 @@ import { supabase } from "../lib/supabaseClient";
 const DateTimeSelector = () => {
   const [selectedService, setSelectedService] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+
   const [duration, setDuration] = useState(60);
   const [reservations, setReservations] = useState([]);
 
+  useEffect(() => {
+    if (selectedService && selectedDate) {
+      fetchReservations();
+    }
+  }, [selectedService, selectedDate]);
+
 
   const fetchReservations = async () => {
+    const formattedDate = format(selectedDate, "yyyy-MM-dd");
+
     try {
       const { data: reservations, error: reservationsError } = await supabase
         .from("reservations")
-        .select("start_time", "end_time", "client_id")
+        .select("start_time, end_time")
         .eq("service", selectedService) 
+        .eq("date", formattedDate)
 
+      console.log(reservations)
       if (reservationsError) {
         console.error("Error fetching reservations:", reservationsError);
       }
 
       setReservations(reservations);
-      console.log(reservations);
     } catch (error) {
       console.error("Error fetching reservations:", error);
     }
@@ -50,8 +61,9 @@ const DateTimeSelector = () => {
     const slotEnd = addMinutes(slotStart, duration);
   
     return reservations.every(res => {
-      const resStart = new Date(`1970-01-01T${res.start_time}:00`);
-      const resEnd = new Date(`1970-01-01T${res.end_time}:00`);
+
+      const resStart = new Date(`1970-01-01T${res.start_time}`);
+      const resEnd = new Date(`1970-01-01T${res.end_time}`);
       return slotEnd <= resStart || slotStart >= resEnd;
     });
   }
@@ -72,13 +84,13 @@ const DateTimeSelector = () => {
       />
       {selectedDate && (
       <select
+        value={selectedService}
         onChange={(e) => {
           setSelectedService(e.target.value);
         }}
       >
         {Object.values(services).map((service) => (
           <option key={service} value={service} className="text-black"
-          defaultValue={null}
           >
             {service}
           </option>
@@ -86,11 +98,19 @@ const DateTimeSelector = () => {
       </select>
       )}
       {selectedDate && selectedService && (
-        <div>
-        </div>
+        <select
+          value={selectedSlot}
+          onChange={(e) => {
+            setSelectedSlot(e.target.value);
+          }}
+        >
+          {availableSlots.map((slot) => (
+            <option key={slot} value={slot} className="text-black">{slot}</option>
+          ))}
+        </select>
       )}
     </div>
   );
 }
 
-export default DateTimeSelector;
+export default DateTimeSelector
