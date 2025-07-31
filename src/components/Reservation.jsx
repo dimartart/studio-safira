@@ -18,8 +18,8 @@ const Reservation = () => {
     email: '',
     service: '',
     date: null,
-    time_end: null,
-    time_start: null,
+    time_end: '',
+    time_start: '',
     modification_token: ''
   })
 
@@ -34,6 +34,10 @@ const Reservation = () => {
       [name]: value
     }))
   }
+
+  const handleReservationChange = (partial) => {
+    setFormData((prev) => ({ ...prev, ...partial }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -192,7 +196,7 @@ const Reservation = () => {
           </div>
         </div>
 
-        <DateTimeSelector value={formData.date} onChange={handleInputChange} />
+        <DateTimeSelector value={formData} onChange={handleReservationChange} />
 
         {/* Submit Button */}
         <div className="text-center">

@@ -1,46 +1,65 @@
 import { useState, useEffect } from "react";
 import { format, isBefore, addMinutes } from "date-fns";
-import { DayPicker } from "react-day-picker";
-import 'react-day-picker/dist/style.css';
+import DatePicker from "./DatePicker";
 import { servicesDuration } from "../lib/services";
 import { services } from "../lib/services";
 import { supabase } from "../lib/supabaseClient";
 
 
-const DateTimeSelector = () => {
-  const [selectedService, setSelectedService] = useState("");
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedSlot, setSelectedSlot] = useState(null);
+const DateTimeSelector = ({value, onChange}) => {
+  const [selected, setSelected] = useState({
+    service: value?.service || Object.values(services)[0],
+    date: value?.date || null,
+    time_start: value?.time_start || "",
+    time_end: value?.time_end || ""
+  });
 
   const [duration, setDuration] = useState(60);
   const [reservations, setReservations] = useState([]);
-
+  
   useEffect(() => {
-    if (selectedService && selectedDate) {
+    if (selected.service && selected.date) {
       fetchReservations();
     }
-  }, [selectedService, selectedDate]);
+  }, [selected.service, selected.date]);
+  
+  const handleChange = (field, val) => {
+    const updated = { ...selected, [field]: val };
 
+    if (field === "time_start" && updated.service) {
+      const d = servicesDuration[updated.service] || 60;
+      const start = new Date(`1970-01-01T${val}`);
+      const end = addMinutes(start, d);
+      updated.time_end = format(end, "HH:mm");
+    }
+
+    if (field === "service") {
+      const d = servicesDuration[val] || 60;
+      setDuration(d);
+    }
+
+    setSelected(updated);
+    onChange(updated); 
+  };
+
+  
+  const calculateEndTime = (startTime, duration) => {
+    const start = new Date(`1970-01-01T${startTime}`);
+    const end = addMinutes(start, duration);
+    return format(end, "HH:mm");
+  };
 
   const fetchReservations = async () => {
-    const formattedDate = format(selectedDate, "yyyy-MM-dd");
+    const formattedDate = format(new Date(selected.date), "yyyy-MM-dd");
 
-    try {
-      const { data: reservations, error: reservationsError } = await supabase
-        .from("reservations")
-        .select("start_time, end_time")
-        .eq("service", selectedService) 
-        .eq("date", formattedDate)
+    const { data, error } = await supabase
+      .from("reservations")
+      .select("start_time, end_time")
+      .eq("service", selected.service)
+      .eq("date", formattedDate);
 
-      console.log(reservations)
-      if (reservationsError) {
-        console.error("Error fetching reservations:", reservationsError);
-      }
-
-      setReservations(reservations);
-    } catch (error) {
-      console.error("Error fetching reservations:", error);
-    }
+    if (error) console.error("Error fetching reservations:", error);
+    else setReservations(data || []);
   };
 
   function generateSlots(start = "10:00", end = "18:00", duration = 60) {
@@ -75,40 +94,41 @@ const DateTimeSelector = () => {
   );
 
   return (
-    <div className="mt-20 flex flex-col gap-6 text-white max-w-md mx-auto">
-      <h1>DateTimeSelector</h1>
-      <DayPicker
-        mode="single"
-        selected={selectedDate}
-        onSelect={setSelectedDate}
-      />
-      {selectedDate && (
-      <select
-        value={selectedService}
-        onChange={(e) => {
-          setSelectedService(e.target.value);
-        }}
+    <div className="grid grid-cols-3 gap-6 text-white p-6 rounded-lg border border-[#D41C8A] shadow-lg">
+        {/* Service Selector */}
+        <select
+        className="cursor-pointer p-2 rounded-lg border border-[#4D2039] shadow-lg"
+        value={selected.service}
+        onChange={(e) => handleChange("service", e.target.value)}
       >
         {Object.values(services).map((service) => (
-          <option key={service} value={service} className="text-black"
+          <option key={service} 
+          value={service}
+          defaultValue={service}
+          className="text-black"
           >
             {service}
           </option>
         ))}
       </select>
-      )}
-      {selectedDate && selectedService && (
-        <select
-          value={selectedSlot}
+
+      <DatePicker value={selected.date} onChange={handleChange} />
+
+
+      {/* Slot Selector */}
+        <select 
+          className={`cursor-pointer p-2 rounded-lg border border-[#4D2039] shadow-lg
+          ${!selected.date || !selected.service ? 'opacity-50 cursor-not-allowed' : ''}`}
+          value={selected.time_start}
+          disabled={!selected.date || !selected.service}
           onChange={(e) => {
-            setSelectedSlot(e.target.value);
+            handleChange("time_start", e.target.value);
           }}
         >
           {availableSlots.map((slot) => (
             <option key={slot} value={slot} className="text-black">{slot}</option>
           ))}
         </select>
-      )}
     </div>
   );
 }
