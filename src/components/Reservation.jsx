@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import DatePicker from 'react-datepicker'
 import { format } from "date-fns";
-import "react-datepicker/dist/react-datepicker.css"
 import emailjs from 'emailjs-com';
+import DateTimeSelector from './DateTimeSelector'
 import { createReservationWithClient } from '../lib/reservation';
 
 
@@ -18,8 +18,8 @@ const Reservation = () => {
     email: '',
     service: '',
     date: null,
-    time_end: null,
-    time_start: null,
+    time_end: '',
+    time_start: '',
     modification_token: ''
   })
 
@@ -35,8 +35,18 @@ const Reservation = () => {
     }))
   }
 
+  const handleReservationChange = (partial) => {
+    setFormData((prev) => ({ ...prev, ...partial }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (!formData.service || !formData.date || !formData.time_start) {
+      alert('Please be sure you have selectes a service, date and time.');
+      return;
+    }
+
     setIsSubmitting(true)
     setMessage({ type: '', text: '' })
 
@@ -49,10 +59,21 @@ const Reservation = () => {
       setMessage({ type: 'error', text: t('reservation.messages.error') })
     }
     finally {
+      setFormData({
+        name: '',
+        surname: '',
+        phone: '',
+        email: '',
+        service: '',
+        date: null,
+        time_end: '',
+        time_start: '',
+        modification_token: ''
+      })
+      
       setIsSubmitting(false)
     }
   }
-
   
   const sendEmail = (formData, reservationId) => {
     const templateParams = {
@@ -192,6 +213,8 @@ const Reservation = () => {
             </div>
           </div>
         </div>
+
+        <DateTimeSelector value={formData} onChange={handleReservationChange} />
 
         {/* Submit Button */}
         <div className="text-center">

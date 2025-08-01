@@ -38,12 +38,6 @@ export async function createReservationWithClient(formData) {
     clientId = newClient.id;
   }
 
-  // 2. Создать токен и посчитать end_time
-//   const startTime = formData.time;
-//   const start = new Date(`1970-01-01T${startTime}:00`);
-//   const end = addMinutes(start, duration);
-//   const endTime = format(end, 'HH:mm');
-
   const modification_token = crypto.randomUUID();
 
   // 3. Создать резервацию
