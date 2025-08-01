@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { DayPicker } from "react-day-picker";
 import 'react-day-picker/dist/style.css';
 import { format } from "date-fns";
@@ -41,17 +41,36 @@ const isDateDisabled = (date) => {
 
 export default function DatePicker({ value, onChange }) {
   const [open, setOpen] = useState(false);
+  const datePickerRef = useRef(null);
+
+  // Close picker when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (datePickerRef.current && !datePickerRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [open]);
 
   return (
-    <div className="relative inline-block">
+    <div className="w-full" ref={datePickerRef}>
       <input
         readOnly
-        className="cursor-pointer p-2 rounded border text-black"
+        placeholder="Choose date"
+        className="cursor-pointer p-2 rounded border border-[#4D2039] text-white w-full"
         value={value ? format(value, 'dd.MM.yyyy') : ''}
         onClick={() => setOpen(!open)}
       />
       {open && (
-        <div className="absolute z-10 mt-2 bg-black rounded shadow-xl">
+        <div className="absolute z-10 mt-2 bg-black rounded shadow-xl text-white">
           <DayPicker
             mode="single"
             selected={value}

@@ -13,18 +13,21 @@ const DateTimeSelector = ({value, onChange}) => {
     time_start: value?.time_start || "",
     time_end: value?.time_end || ""
   });
-
+  
   const [duration, setDuration] = useState(60);
+
   const [reservations, setReservations] = useState([]);
   
   useEffect(() => {
     if (selected.service && selected.date) {
       fetchReservations();
     }
+
   }, [selected.service, selected.date]);
   
   const handleChange = (field, val) => {
     const updated = { ...selected, [field]: val };
+
 
     if (field === "time_start" && updated.service) {
       const d = servicesDuration[updated.service] || 60;
@@ -87,35 +90,54 @@ const DateTimeSelector = ({value, onChange}) => {
     });
   }
 
-  const allSlots = generateSlots("10:00", "18:00");
+  const isFriday = (date) => date.getDay() === 5;
+
+  const getSlotRangeForDay = (date) => {
+    return isFriday(date)
+      ? ["09:00", "16:00"] 
+      : ["09:00", "18:00"]; 
+  };
+
+  const [slotStart, slotEnd] = getSlotRangeForDay(new Date(selected.date));
+
+  const allSlots = generateSlots(slotStart, slotEnd, duration);
 
   const availableSlots = allSlots.filter(time =>
     isSlotAvailable(time, duration, reservations)
   );
 
   return (
-    <div className="grid grid-cols-3 gap-6 text-white p-6 rounded-lg border border-[#D41C8A] shadow-lg">
-        {/* Service Selector */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white p-6 rounded-lg border border-[#D41C8A] shadow-lg">
+
+      <div className="flex flex-col gap-2">
+        <label>Service*</label>
         <select
-        className="cursor-pointer p-2 rounded-lg border border-[#4D2039] shadow-lg"
-        value={selected.service}
-        onChange={(e) => handleChange("service", e.target.value)}
-      >
-        {Object.values(services).map((service) => (
-          <option key={service} 
-          value={service}
-          defaultValue={service}
-          className="text-black"
-          >
-            {service}
-          </option>
-        ))}
-      </select>
+          className="cursor-pointer p-2 rounded-lg border border-[#4D2039] shadow-lg"
+          value={selected.service}
+          onChange={(e) => handleChange("service", e.target.value)}
+        >
+          <option value="" className="text-white bg-black">Choose service</option>
+          {Object.values(services).map((service) => (
+            <option key={service} 
+            value={service}
+            className="text-white bg-black"
+            >
+              {service}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <DatePicker value={selected.date} onChange={handleChange} />
+      <div className="flex flex-col gap-2">
+        <label>Date*</label>
+      <DatePicker
+        value={selected.date ? new Date(selected.date) : null}
+        onChange={(val) => handleChange("date", val)}
+      />
+      </div>
 
-
-      {/* Slot Selector */}
+      <div className="flex flex-col gap-2">
+        <label>Time*</label>
         <select 
           className={`cursor-pointer p-2 rounded-lg border border-[#4D2039] shadow-lg
           ${!selected.date || !selected.service ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -125,10 +147,12 @@ const DateTimeSelector = ({value, onChange}) => {
             handleChange("time_start", e.target.value);
           }}
         >
+          <option value="" className="text-white bg-black">Choose time</option>
           {availableSlots.map((slot) => (
-            <option key={slot} value={slot} className="text-black">{slot}</option>
+            <option key={slot} value={slot} className="text-white bg-black">{slot}</option>
           ))}
         </select>
+      </div>
     </div>
   );
 }

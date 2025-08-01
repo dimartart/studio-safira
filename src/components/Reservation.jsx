@@ -41,6 +41,12 @@ const Reservation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (!formData.service || !formData.date || !formData.time_start) {
+      alert('Please be sure you have selectes a service, date and time.');
+      return;
+    }
+
     setIsSubmitting(true)
     setMessage({ type: '', text: '' })
 
@@ -53,6 +59,18 @@ const Reservation = () => {
       setMessage({ type: 'error', text: t('reservation.messages.error') })
     }
     finally {
+      setFormData({
+        name: '',
+        surname: '',
+        phone: '',
+        email: '',
+        service: '',
+        date: null,
+        time_end: '',
+        time_start: '',
+        modification_token: ''
+      })
+      
       setIsSubmitting(false)
     }
   }
