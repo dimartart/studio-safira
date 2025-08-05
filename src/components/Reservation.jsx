@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker'
 import { format } from "date-fns";
 import emailjs from 'emailjs-com';
 import DateTimeSelector from './DateTimeSelector'
-import { createReservationWithClient } from '../lib/reservation';
+import { createReservationWithClient } from '../lib/db';
 
 
 const Reservation = () => {

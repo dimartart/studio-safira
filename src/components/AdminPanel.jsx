@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { services } from "../lib/services";
 import { supabase } from "../lib/supabaseClient";
+import {
+    fetchReservationsWithFilters,
+    updateReservation,
+    updateClient,
+    deleteReservation,
+    deleteClient
+  } from "../lib/db";
 
 
 const AdminPanel = () => {
-    const [reservations, setReservations] = useState([]);
+    const inputRef = useRef();
 
-    // Filters
-    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-    const [selectedService, setSelectedService] = useState('');
+    const [reservations, setReservations] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const [filters, setFilters] = useState({
         date: new Date().toISOString().split('T')[0],
@@ -51,69 +57,16 @@ const AdminPanel = () => {
 
     const sendRequestQuery = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
-        let clientIds = [];
-
-        let query = supabase.from("reservations").select(`
-            id,
-            date,
-            start_time,
-            end_time,
-            service,
-            status,
-            clients (name, surname, phone, email, id)
-            `);
-
-        if (filters.name || filters.surname) {
-            const { data: clients, error: clientsError } = await supabase
-                .from("clients")
-                .select("id")
-                .ilike("name", `%${filters.name || ''}%`)
-                .ilike("surname", `%${filters.surname || ''}%`);
-
-            if (clientsError) {
-                console.error("Error filtering clients:", clientsError);
-                return;
-            }
-
-            clientIds = clients.map(client => client.id);
+        try {
+            const data = await fetchReservationsWithFilters(filters);
+            setReservations(data);
+        } catch (err) {
+          console.error("Filter error:", err);
         }
-
-      
-
-        if (clientIds.length > 0) {
-            query = query.in("client_id", clientIds);
-        }
-
-        if (filters.service) {
-            query = query.ilike("service", `%${filters.service}%`);
-        }
-
-        if (filters.date) {
-            const formattedDate = new Date(filters.date).toISOString().split('T')[0];
-            query = query.eq("date", formattedDate);
-        }
-      
-        const { data, error } = await query;
-
-        const formattedData = data.map(reservation => ({
-            id: reservation.id,
-            date: reservation.date,
-            start_time: reservation.start_time,
-            end_time: reservation.end_time,
-            service: reservation.service,
-            status: reservation?.status || 'waiting',
-            name: reservation.clients?.name || '',
-            surname: reservation.clients?.surname || '',
-            phone: reservation.clients?.phone || '',
-            email: reservation.clients?.email || '',
-            client_id: reservation.clients?.id || ''
-        }));
-      
-        if (error) {
-          console.error("Filter error:", error);
-        } else {
-          setReservations(formattedData);
+        finally {
+            setLoading(false);
         }
     };
 
@@ -133,59 +86,41 @@ const AdminPanel = () => {
     };
 
     const handleSave = async () => {
-
         try {
-            // Update reservation table
-            const { error: reservationError } = await supabase
-                .from('reservations')
-                .update({
-                    service: editForm.service,
-                    date: editForm.date,
-                    start_time: editForm.start_time,
-                    end_time: editForm.end_time,
-                    status: editForm.status
-                })
-                .eq('id', editingId);
-
-            if (reservationError) throw reservationError;
-
-            // Update client table
-            const reservation = reservations.find(r => r.id === editingId);
-            if (reservation) {
-                const { error: clientError } = await supabase
-                    .from('clients')
-                    .update({
-                        name: editForm.name,
-                        surname: editForm.surname,
-                        email: editForm.email,
-                        phone: editForm.phone
-                    })
-                    .eq('id', reservation.client_id);
-
-                if (clientError) throw clientError;
-            }
-
-            setEditingId(null);
-            setError('');
-            window.location.reload();
+          await updateReservation(editingId, {
+            service: editForm.service,
+            date: editForm.date,
+            start_time: editForm.start_time,
+            end_time: editForm.end_time,
+            status: editForm.status
+          });
+      
+          const client = reservations.find(r => r.id === editingId);
+          if (client) {
+            await updateClient(client.client_id, {
+              name: editForm.name,
+              surname: editForm.surname,
+              email: editForm.email,
+              phone: editForm.phone
+            });
+          }
+      
+          setEditingId(null);
+          setError('');
+          window.location.reload();
         } catch (err) {
-            setError('Failed to update reservation: ' + err.message);
-            console.error('Error updating reservation:', err);
+          setError('Failed to update reservation: ' + err.message);
         }
     };
 
     const handleDeleteReservation = async (id) => {
-        console.log("reservation id", id);
-        const { error } = await supabase.from('reservations').delete().eq('id', id);
-        if (error) throw error;
-        window.location.reload();    
-    };
+        await deleteReservation(id);
+        window.location.reload();
+      };
 
     const handleDeleteClient = async (id) => {
-        console.log("client id", id);
-        const { error } = await supabase.from('clients').delete().eq('id', id);
-        if (error) throw error;
-        window.location.reload();
+    await deleteClient(id);
+    window.location.reload();
     };
 
     const handleCancel = () => {
@@ -244,10 +179,11 @@ const AdminPanel = () => {
                         </label>
                         <input
                             type="date"
+                            onFocus={(e) => e.target.showPicker && e.target.showPicker()}
                             value={filters.date}
                             name="date"
                             onChange={handleFilters}
-                            className=" border border-[#D41C8A] rounded-lg px-2 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
+                            className="cursor-pointer border border-[#D41C8A] rounded-lg px-2 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
                         />
                         <button
                             type="button"
@@ -267,7 +203,7 @@ const AdminPanel = () => {
                             onChange={handleFilters}
                             className="appearance-none border border-[#D41C8A] rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
                         >
-                            <option className='text-black'>Select Service</option>
+                            <option value='' className='text-black'>Select Service</option>
                             {Object.values(services).map(service => (
                                 <option 
                                 className='text-black'
@@ -321,7 +257,10 @@ const AdminPanel = () => {
                     </div>
                 </div>
 
-                <div className='flex flex-row gap-4 mb-4'>
+                <div className='flex flex-col gap-4 mb-4'>
+                    {loading && (
+                        <div className=" text-white">Loading...</div>
+                    )}
                     <p className='text-white'>The {reservations.length} reservations have been found for your search.</p>
                 </div>
 
@@ -376,15 +315,17 @@ const AdminPanel = () => {
                                         <label className="block text-sm font-medium text-[#e8e8e8] mb-1">Date</label>
                                         <input
                                             type="date"
+                                            onFocus={(e) => e.target.showPicker && e.target.showPicker()}
                                             value={editForm.date}
                                             onChange={(e) => setEditForm({...editForm, date: e.target.value})}
-                                            className="w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A]"
+                                            className="cursor-pointer w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white"
                                         />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-[#e8e8e8] mb-1">Time</label>
                                         <input
                                             type="time"
+                                            onFocus={(e) => e.target.showPicker && e.target.showPicker()}
                                             value={editForm.start_time}
                                             onChange={(e) => setEditForm({...editForm, start_time: e.target.value})}
                                             className="w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A]"
@@ -394,9 +335,10 @@ const AdminPanel = () => {
                                         <label className="block text-sm font-medium text-[#e8e8e8] mb-1">End Time</label>
                                         <input
                                             type="time"
+                                            onFocus={(e) => e.target.showPicker && e.target.showPicker()}
                                             value={editForm.end_time}
                                             onChange={(e) => setEditForm({...editForm, end_time: e.target.value})}
-                                            className="w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A]"
+                                            className="cursor-pointer w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A]"
                                         />
                                     </div>
                                     <div>
@@ -425,7 +367,7 @@ const AdminPanel = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="flex gap-3 justify-between flex-wrap">
+                                <div className="flex gap-3 flex-col sm:flex-row sm:justify-between">
                                     <div className='flex gap-3'>
                                         <button
                                             onClick={handleSave}
@@ -440,9 +382,9 @@ const AdminPanel = () => {
                                             Cancel
                                         </button>
                                     </div>
-                                    <div className='flex gap-3'>
+                                    <div className='flex gap-3 flex-wrap'>
                                         <button
-                                            className="bg-[#000000] hover:bg-[#1a1919] text-white px-6 py-2 rounded-lg transition-colors duration-300"
+                                            className="bg-gray-700 hover:bg-[#1a1919] text-white px-6 py-2 rounded-lg transition-colors duration-300"
                                             onClick={() => handleDeleteReservation(reservation.id)}                                            
                                         >
                                             Delete reservation
@@ -465,7 +407,7 @@ const AdminPanel = () => {
                                     <div className="text-[#e8e8e8]">{reservation.email}</div>
                                 </div>
                                 <div className="text-[#a1a1a1]">{reservation.date}</div>
-                                <div className="text-[#a1a1a1]">{reservation.start_time} - {reservation.end_time}</div>
+                                <div className="text-[#a1a1a1]">{reservation.start_time?.slice(0, 5)} - {reservation.end_time?.slice(0, 5)}</div>
                                 <div className="text-[#a1a1a1]">{reservation.service}</div>
                                 <div className="">
                                     <span className={`px-2 py-1 rounded text-sm font-bold text-black ${getStatusColor(reservation.status)}`}>

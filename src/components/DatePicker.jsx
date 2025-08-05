@@ -15,16 +15,13 @@ const czechHolidays = [
 const isCzechHoliday = (date) =>
   czechHolidays.includes(format(date, 'yyyy-MM-dd'));
 
-const isTomorrowLocked = (date) => {
+const isTodayLocked = (date) => {
   const now = new Date();
   const nowPrague = new Date(formatInTimeZone(now, PRAGUE_TZ, "yyyy-MM-dd'T'HH:mm:ssXXX"));
-  const tomorrow = new Date(nowPrague);
-  tomorrow.setDate(tomorrow.getDate() + 1);
 
   return (
-    format(date, 'yyyy-MM-dd') === format(tomorrow, 'yyyy-MM-dd') &&
-    nowPrague.getHours() >= 0
-  );
+    format(date, 'yyyy-MM-dd') === format(nowPrague, 'yyyy-MM-dd')
+  )
 };
 
 const isDateDisabled = (date) => {
@@ -35,7 +32,7 @@ const isDateDisabled = (date) => {
     date < today ||
     day === 0 || day === 6 ||          
     isCzechHoliday(date) ||
-    isTomorrowLocked(date)
+    isTodayLocked(date)
   );
 };
 
