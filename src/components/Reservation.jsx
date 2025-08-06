@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import DatePicker from 'react-datepicker'
-import { format } from "date-fns";
 import emailjs from 'emailjs-com';
 import DateTimeSelector from './DateTimeSelector'
 import { createReservationWithClient } from '../lib/db';
@@ -51,9 +49,15 @@ const Reservation = () => {
     setMessage({ type: '', text: '' })
 
     try {
-      const reservation = await createReservationWithClient(formData)
+      await createReservationWithClient(formData)
       setMessage({ type: 'success', text: t('reservation.messages.success') })
-      // sendEmail(formData, reservation.client_id)
+
+      try {
+        sendEmail(formData)
+      } catch (error) {
+        console.error('Error sending email:', error)
+      }
+
     } catch (error) {
       console.error('Error creating reservation:', error)
       setMessage({ type: 'error', text: t('reservation.messages.error') })
@@ -75,13 +79,14 @@ const Reservation = () => {
     }
   }
   
-  const sendEmail = (formData, reservationId) => {
+  const sendEmail = (formData) => {
     const templateParams = {
       to_email: formData.email,
       to_name: `${formData.name} ${formData.surname}`,
       service: formData.service,
       date: formData.date.toLocaleDateString(),
-      time: formData.time,
+      time_start: formData.time_start,
+      time_end: formData.time_end,
       link_cancel: `https://studio-safira.vercel.app/cancel/${formData.modification_token}`,
       link_edit: `https://studio-safira.vercel.app/edit/${formData.modification_token}`
     };

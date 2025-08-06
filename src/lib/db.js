@@ -1,6 +1,15 @@
 import { supabase } from './supabaseClient';
 import { format } from 'date-fns';
 
+export const fetchReservationData = async (token) => {
+  const { data, error } = await supabase
+    .from('reservations')
+    .select('id, date, start_time, end_time, service, clients (name, surname, phone, email)')
+    .eq('modification_token', token)
+    .single();
+  return data;
+};
+
 export async function createReservationWithClient(formData) {
   
   const { data: existingClient, error: fetchError } = await supabase

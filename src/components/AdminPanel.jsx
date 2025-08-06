@@ -116,7 +116,7 @@ const AdminPanel = () => {
     const handleDeleteReservation = async (id) => {
         await deleteReservation(id);
         window.location.reload();
-      };
+    };
 
     const handleDeleteClient = async (id) => {
     await deleteClient(id);
