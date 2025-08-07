@@ -69,6 +69,7 @@ export default function DatePicker({ value, onChange }) {
       {open && (
         <div className="absolute z-10 mt-2 bg-black rounded shadow-xl text-white">
           <DayPicker
+            className="p-2"
             mode="single"
             selected={value}
             onSelect={(date) => {

@@ -8,7 +8,7 @@ import { supabase } from "../lib/supabaseClient";
 
 const DateTimeSelector = ({value, onChange}) => {
   const [selected, setSelected] = useState({
-    service: value?.service || Object.values(services)[0],
+    service: value?.service ,
     date: value?.date || null,
     start_time: value?.start_time || "",
     end_time: value?.end_time || ""

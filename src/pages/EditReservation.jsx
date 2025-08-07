@@ -16,7 +16,7 @@ const EditReservation = () => {
     start_time: '',
     end_time: ''
   });
-  const [isLoading, setIsLoading] = useState(false);
+  const [infoMessage, setInfoMessage] = useState('')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,47 +43,24 @@ const EditReservation = () => {
   const handleCancelReservation = async () => {
     try {
       await deleteReservation(reservationData.id);
+      setInfoMessage('Reservation cancelled successfully. Now you can close this page.');
     } catch (error) {
       console.error('Error cancelling reservation:', error);
-      console.log(error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
-  const handleUpdateReservation = async (e) => {
-    e.preventDefault();
+  const handleUpdateReservation = async () => {
+    if (!editFormData.service || !editFormData.date || !editFormData.start_time) {
+      alert('Please be sure you have selectes a service, date and time.');
+      return;
+    }
 
     try {
       await updateReservation(reservationData.id, editFormData);
-
+      setInfoMessage('Reservation updated successfully. Reload the page to see the changes.');
     } catch (error) {
       console.error('Error editing reservation:', error);
-      console.log(error);
-    } finally {
-      console.log('Reservation edited successfully.');
-      setIsLoading(false);
     }
-
-    // setIsLoading(true);
-    // try {
-    //     const { error } = await supabase
-    //         .from('reservations')
-    //         .update({ date: editForm.date, time: editForm.time })
-    //         .eq('modification_token', modification_token);  
-
-    //     if (error) {
-    //         console.error('Error editing reservation:', error);
-    //         alert('Error editing reservation. Please try again.');
-    //     } else {
-    //         alert('Reservation edited successfully.');
-    //     }
-    // } catch (error) {
-    //   console.error('Error:', error);
-    //   alert('An unexpected error occurred.');
-    // } finally {
-    //   setIsLoading(false);
-    // }
   };
 
 
@@ -107,7 +84,7 @@ const EditReservation = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-500 mx-auto"></div>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-4">
+          <div className="flex flex-col gap-4">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-4 border border-white/20 shadow-2xl">
                 <h2 className="text-2xl font-semibold text-white mb-6 text-center">
                 Data of your reservation:
@@ -144,32 +121,38 @@ const EditReservation = () => {
                   </div>
                 </div>
             </div>
+            {infoMessage && (
+            <div className='flex items-center justify-center bg-black/50 p-4 rounded-lg'>
+              <div className='text-center text-white text-2xl'>
+                {infoMessage}
+              </div>
+            </div>
+            )}
+            {!infoMessage && (
             <div className="flex flex-col gap-2 bg-white/10 backdrop-blur-sm rounded-2xl p-2 sm:p-8 mb-8 border border-white/20 shadow-2xl">
                 <h2 className="text-2xl font-semibold text-white mb-6 text-center">
-                    Enter new data and time:
+                    Enter new service, data and time:
                 </h2>
-                <form onSubmit={handleUpdateReservation} className="flex flex-col gap-4">
-                    <DateTimeSelector value={editFormData} onChange={handleReservationChange} />
-                    <button
-                        type="submit"
-                        className="px-8 py-4 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-                        disabled={isLoading}
-                    >
-                        Edit Reservation
-                    </button>
-                </form>
                 <div className="text-center">
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                        className="px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                        onClick={handleCancelReservation}
-                        disabled={isLoading}
-                    >
-                        {isLoading ? 'Cancelling...' : 'Cancel Reservation'}
-                    </button>
+                    <div className="flex flex-col gap-4 justify-center">
+                    <DateTimeSelector value={editFormData} onChange={handleReservationChange} />
+                      <button
+                          type="submit"
+                          onClick={handleUpdateReservation}
+                          className=" px-8 py-4 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                      >
+                          Edit Reservation
+                      </button>
+                      <button
+                          className="px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                          onClick={handleCancelReservation}
+                      >
+                          Cancel Reservation
+                      </button>
                     </div>
-                </div>
-            </div>
+                  </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
