@@ -73,7 +73,7 @@ export default function DatePicker({ value, onChange }) {
             selected={value}
             onSelect={(date) => {
               setOpen(false);
-              onChange(date);
+              onChange(format(date, 'yyyy-MM-dd'));
             }}
             disabled={isDateDisabled}
           />

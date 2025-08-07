@@ -7,6 +7,9 @@ export const fetchReservationData = async (token) => {
     .select('id, date, start_time, end_time, service, clients (name, surname, phone, email)')
     .eq('modification_token', token)
     .single();
+    
+  if (error) throw error;
+
   return data;
 };
 
@@ -46,9 +49,9 @@ export async function createReservationWithClient(formData) {
     .insert({
       client_id: clientId,
       service: formData.service,
-      date: format(formData.date, "yyyy-MM-dd"),
-      start_time: formData.time_start,
-      end_time: formData.time_end,
+      date: formData.date,
+      start_time: formData.start_time,
+      end_time: formData.end_time,
       modification_token
     })
     .select()

@@ -10,8 +10,8 @@ const DateTimeSelector = ({value, onChange}) => {
   const [selected, setSelected] = useState({
     service: value?.service || Object.values(services)[0],
     date: value?.date || null,
-    time_start: value?.time_start || "",
-    time_end: value?.time_end || ""
+    start_time: value?.start_time || "",
+    end_time: value?.end_time || ""
   });
   
   const [duration, setDuration] = useState(60);
@@ -29,11 +29,11 @@ const DateTimeSelector = ({value, onChange}) => {
     const updated = { ...selected, [field]: val };
 
 
-    if (field === "time_start" && updated.service) {
+    if (field === "start_time" && updated.service) {
       const d = servicesDuration[updated.service] || 60;
       const start = new Date(`1970-01-01T${val}`);
       const end = addMinutes(start, d);
-      updated.time_end = format(end, "HH:mm");
+      updated.end_time = format(end, "HH:mm");
     }
 
     if (field === "service") {
@@ -45,12 +45,6 @@ const DateTimeSelector = ({value, onChange}) => {
     onChange(updated); 
   };
 
-  
-  const calculateEndTime = (startTime, duration) => {
-    const start = new Date(`1970-01-01T${startTime}`);
-    const end = addMinutes(start, duration);
-    return format(end, "HH:mm");
-  };
 
   const fetchReservations = async () => {
     const formattedDate = format(new Date(selected.date), "yyyy-MM-dd");
@@ -141,10 +135,10 @@ const DateTimeSelector = ({value, onChange}) => {
         <select 
           className={`cursor-pointer p-2 rounded-lg border border-[#4D2039] shadow-lg
           ${!selected.date || !selected.service ? 'opacity-50 cursor-not-allowed' : ''}`}
-          value={selected.time_start}
+          value={selected.start_time}
           disabled={!selected.date || !selected.service}
           onChange={(e) => {
-            handleChange("time_start", e.target.value);
+            handleChange("start_time", e.target.value);
           }}
         >
           <option value="" className="text-white bg-black">Choose time</option>

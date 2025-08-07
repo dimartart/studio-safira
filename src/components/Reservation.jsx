@@ -4,7 +4,6 @@ import emailjs from 'emailjs-com';
 import DateTimeSelector from './DateTimeSelector'
 import { createReservationWithClient } from '../lib/db';
 
-
 const Reservation = () => {
   
   const { t } = useTranslation()
@@ -16,8 +15,8 @@ const Reservation = () => {
     email: '',
     service: '',
     date: null,
-    time_end: '',
-    time_start: '',
+    start_time: '',
+    end_time: '',
     modification_token: ''
   })
 
@@ -40,7 +39,7 @@ const Reservation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!formData.service || !formData.date || !formData.time_start) {
+    if (!formData.service || !formData.date || !formData.start_time) {
       alert('Please be sure you have selectes a service, date and time.');
       return;
     }
@@ -53,7 +52,7 @@ const Reservation = () => {
       setMessage({ type: 'success', text: t('reservation.messages.success') })
 
       try {
-        sendEmail(formData)
+        // sendEmail(formData)
       } catch (error) {
         console.error('Error sending email:', error)
       }
@@ -70,8 +69,8 @@ const Reservation = () => {
         email: '',
         service: '',
         date: null,
-        time_end: '',
-        time_start: '',
+        start_time: '',
+        end_time: '',
         modification_token: ''
       })
       
@@ -85,8 +84,8 @@ const Reservation = () => {
       to_name: `${formData.name} ${formData.surname}`,
       service: formData.service,
       date: formData.date.toLocaleDateString(),
-      time_start: formData.time_start,
-      time_end: formData.time_end,
+      start_time: formData.start_time,
+      end_time: formData.end_time,
       link_cancel: `https://studio-safira.vercel.app/cancel/${formData.modification_token}`,
       link_edit: `https://studio-safira.vercel.app/edit/${formData.modification_token}`
     };
