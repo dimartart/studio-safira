@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
-// import { supabase } from "../lib/supabaseClient";   
+import React, { useState, useEffect, useRef } from 'react';
+import { services } from "../lib/services";
+import { supabase } from "../lib/supabaseClient";
+import {
+    fetchReservationsWithFilters,
+    updateReservation,
+    updateClient,
+    deleteReservation,
+    deleteClient
+  } from "../lib/db";
 
 
 const AdminPanel = () => {
-    const [reservations, setReservations] = useState([]);
+    const inputRef = useRef();
 
-    // Filters
-    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-    const [selectedService, setSelectedService] = useState('');
+    const [reservations, setReservations] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const [filters, setFilters] = useState({
         date: new Date().toISOString().split('T')[0],
@@ -24,27 +31,19 @@ const AdminPanel = () => {
         });
     };
 
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [editingId, setEditingId] = useState(null);
     const [editForm, setEditForm] = useState({
         name: '',
         surname: '',
         date: '',
-        time: '',
+        start_time: '',
+        end_time: '',
         phone:'',
         email:'',
         service: '',
         status: 'waiting',
     });
-
-    const services = [
-        'kadernictvi',
-        'kosmetika',
-        'masaze',
-        'pedikura',
-        'lymfodrenaz'
-    ];
 
     const statusOptions = [
         { value: 'waiting', label: 'Waiting', color: 'bg-yellow-500' },
@@ -58,74 +57,16 @@ const AdminPanel = () => {
 
     const sendRequestQuery = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
-        let clientIds = [];
-
-        let query = supabase.from("reservations").select(`
-            id,
-            date,
-            time,
-            service,
-            status,
-            clients (name, surname, phone, email, id)
-            `);
-
-        if (filters.name || filters.surname) {
-            const { data: clients, error: clientsError } = await supabase
-                .from("clients")
-                .select("id")
-                .ilike("name", `%${filters.name || ''}%`)
-                .ilike("surname", `%${filters.surname || ''}%`);
-
-            if (clientsError) {
-                console.error("Error filtering clients:", clientsError);
-                return;
-            }
-
-            clientIds = clients.map(client => client.id);
+        try {
+            const data = await fetchReservationsWithFilters(filters);
+            setReservations(data);
+        } catch (err) {
+          console.error("Filter error:", err);
         }
-
-      
-
-        if (clientIds.length > 0) {
-            query = query.in("client_id", clientIds);
-        }
-
-        if (filters.service) {
-            query = query.ilike("service", `%${filters.service}%`);
-        }
-
-        if (filters.date) {
-            const formattedDate = new Date(filters.date).toISOString().split('T')[0];
-            query = query.eq("date", formattedDate);
-        }
-      
-        const { data, error } = await query;
-
-        const formattedData = data.map(reservation => ({
-            id: reservation.id,
-            date: reservation.date,
-            time: reservation.time,
-            service: reservation.service,
-            status: reservation?.status || 'waiting',
-            name: reservation.clients?.name || '',
-            surname: reservation.clients?.surname || '',
-            phone: reservation.clients?.phone || '',
-            email: reservation.clients?.email || '',
-            client_id: reservation.clients?.id || ''
-        }));
-
-        setFilters({
-            date: '',
-            name: '',
-            surname: '',
-            service: ''
-        });
-      
-        if (error) {
-          console.error("Filter error:", error);
-        } else {
-          setReservations(formattedData);
+        finally {
+            setLoading(false);
         }
     };
 
@@ -137,65 +78,49 @@ const AdminPanel = () => {
             email: reservation.email,
             phone: reservation.phone,
             date: reservation.date,
-            time: reservation.time,
+            start_time: reservation.start_time,
+            end_time: reservation.end_time,
             service: reservation.service,
             status: reservation.status
         });
     };
 
     const handleSave = async () => {
-
         try {
-            // Update reservation table
-            const { error: reservationError } = await supabase
-                .from('reservations')
-                .update({
-                    service: editForm.service,
-                    date: editForm.date,
-                    time: editForm.time,
-                    status: editForm.status
-                })
-                .eq('id', editingId);
-
-            if (reservationError) throw reservationError;
-
-            // Update client table
-            const reservation = reservations.find(r => r.id === editingId);
-            if (reservation) {
-                const { error: clientError } = await supabase
-                    .from('clients')
-                    .update({
-                        name: editForm.name,
-                        surname: editForm.surname,
-                        email: editForm.email,
-                        phone: editForm.phone
-                    })
-                    .eq('id', reservation.client_id);
-
-                if (clientError) throw clientError;
-            }
-
-            setEditingId(null);
-            setError('');
-            window.location.reload();
+          await updateReservation(editingId, {
+            service: editForm.service,
+            date: editForm.date,
+            start_time: editForm.start_time,
+            end_time: editForm.end_time,
+            status: editForm.status
+          });
+      
+          const client = reservations.find(r => r.id === editingId);
+          if (client) {
+            await updateClient(client.client_id, {
+              name: editForm.name,
+              surname: editForm.surname,
+              email: editForm.email,
+              phone: editForm.phone
+            });
+          }
+      
+          setEditingId(null);
+          setError('');
+          window.location.reload();
         } catch (err) {
-            setError('Failed to update reservation: ' + err.message);
-            console.error('Error updating reservation:', err);
+          setError('Failed to update reservation: ' + err.message);
         }
     };
 
     const handleDeleteReservation = async (id) => {
-        console.log("reservation id", id);
-        const { error } = await supabase.from('reservations').delete().eq('id', id);
-        if (error) throw error;
-        window.location.reload();    
+        await deleteReservation(id);
+        window.location.reload();
     };
 
     const handleDeleteClient = async (id) => {
-        console.log("client id", id);
-        const { error } = await supabase.from('clients').delete().eq('id', id);
-        if (error) throw error;
-        window.location.reload();
+    await deleteClient(id);
+    window.location.reload();
     };
 
     const handleCancel = () => {
@@ -204,7 +129,8 @@ const AdminPanel = () => {
             name: '',
             surname: '',
             date: '',
-            time: '',
+            start_time: '',
+            end_time: '',
             service: '',
             status: 'waiting'
         });
@@ -219,11 +145,6 @@ const AdminPanel = () => {
         return statusOption ? statusOption.color : 'bg-gray-500';
     };
 
-    // if (loading) return (
-    //     <div className="min-h-screen bg-black flex items-center justify-center">
-    //         <div className="text-white text-xl">Loading...</div>
-    //     </div>
-    // );
 
     return (
         <div className="pt-20 min-h-screen  text-white">
@@ -258,10 +179,11 @@ const AdminPanel = () => {
                         </label>
                         <input
                             type="date"
+                            onFocus={(e) => e.target.showPicker && e.target.showPicker()}
                             value={filters.date}
                             name="date"
                             onChange={handleFilters}
-                            className="bg-[#2A2A2A] border border-[#D41C8A] rounded-lg px-2 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
+                            className="cursor-pointer border border-[#D41C8A] rounded-lg px-2 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
                         />
                         <button
                             type="button"
@@ -276,14 +198,16 @@ const AdminPanel = () => {
                             Filter by Service:
                         </label>
                         <select 
-                            value={filters.service}
+                            value={filters.service || ''}
                             name="service"
                             onChange={handleFilters}
-                            className="appearance-none bg-[#2A2A2A] border border-[#D41C8A] rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
+                            className="appearance-none border border-[#D41C8A] rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
                         >
-                            <option>Select Service</option>
-                            {services.map(service => (
-                                <option key={service} value={service}>{service}</option>
+                            <option value='' className='text-black'>Select Service</option>
+                            {Object.values(services).map(service => (
+                                <option 
+                                className='text-black'
+                                 key={service} value={service}>{service}</option>
                             ))}
                         </select>
                     </div>
@@ -297,7 +221,7 @@ const AdminPanel = () => {
                                 value={filters.name}
                                 name="name"
                                 onChange={handleFilters}
-                                className="bg-[#2A2A2A] border border-[#D41C8A] rounded-lg px-2 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
+                                className=" border border-[#D41C8A] rounded-lg px-2 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
                             />
                         </div>
                         <div>
@@ -309,7 +233,7 @@ const AdminPanel = () => {
                                 value={filters.surname}
                                 name="surname"
                                 onChange={handleFilters}
-                                className="bg-[#2A2A2A] border border-[#D41C8A] rounded-lg px-2 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
+                                className=" border border-[#D41C8A] rounded-lg px-2 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
                             />
                         </div>
                     </div>
@@ -322,7 +246,7 @@ const AdminPanel = () => {
                 </form>
 
                 {/* Table Header */}
-                <div className="bg-[#2A2A2A] hidden lg:block rounded-lg p-4 mb-4 border border-[#D41C8A]">
+                <div className=" hidden lg:block rounded-lg p-4 mb-4 border border-[#D41C8A]">
                     <div className="text-center grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 font-semibold text-[#D41C8A]">
                         <div>Clients info</div>
                         <div className="hidden sm:block">Date</div>
@@ -333,13 +257,20 @@ const AdminPanel = () => {
                     </div>
                 </div>
 
+                <div className='flex flex-col gap-4 mb-4'>
+                    {loading && (
+                        <div className=" text-white">Loading...</div>
+                    )}
+                    <p className='text-white'>The {reservations.length} reservations have been found for your search.</p>
+                </div>
+
                 {/* Table Records */}
                 <div className="space-y-4">
                     {reservations.length === 0 ? (
                         <div className="text-center text-white">No reservations found</div>
                     ) : (
                     reservations.map((reservation) => (
-                    <div key={reservation.id} className="bg-[#2A2A2A] rounded-lg p-4 border border-[#4D2039]">
+                    <div key={reservation.id} className=" rounded-lg p-4 border border-[#4D2039]">
                         {editingId === reservation.id ? (
                             // Edit Mode
                             <div className="space-y-4">
@@ -384,18 +315,30 @@ const AdminPanel = () => {
                                         <label className="block text-sm font-medium text-[#e8e8e8] mb-1">Date</label>
                                         <input
                                             type="date"
+                                            onFocus={(e) => e.target.showPicker && e.target.showPicker()}
                                             value={editForm.date}
                                             onChange={(e) => setEditForm({...editForm, date: e.target.value})}
-                                            className="w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A]"
+                                            className="cursor-pointer w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white"
                                         />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-[#e8e8e8] mb-1">Time</label>
                                         <input
                                             type="time"
-                                            value={editForm.time}
-                                            onChange={(e) => setEditForm({...editForm, time: e.target.value})}
+                                            onFocus={(e) => e.target.showPicker && e.target.showPicker()}
+                                            value={editForm.start_time}
+                                            onChange={(e) => setEditForm({...editForm, start_time: e.target.value})}
                                             className="w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A]"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-sm font-medium text-[#e8e8e8] mb-1">End Time</label>
+                                        <input
+                                            type="time"
+                                            onFocus={(e) => e.target.showPicker && e.target.showPicker()}
+                                            value={editForm.end_time}
+                                            onChange={(e) => setEditForm({...editForm, end_time: e.target.value})}
+                                            className="cursor-pointer w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A]"
                                         />
                                     </div>
                                     <div>
@@ -406,7 +349,7 @@ const AdminPanel = () => {
                                             className="w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A]"
                                         >
                                             <option value="">Select Service</option>
-                                            {services.map(service => (
+                                            {Object.values(services).map(service => (
                                                 <option key={service} value={service}>{service}</option>
                                             ))}
                                         </select>
@@ -424,7 +367,7 @@ const AdminPanel = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div className="flex gap-3 justify-between flex-wrap">
+                                <div className="flex gap-3 flex-col sm:flex-row sm:justify-between">
                                     <div className='flex gap-3'>
                                         <button
                                             onClick={handleSave}
@@ -439,9 +382,9 @@ const AdminPanel = () => {
                                             Cancel
                                         </button>
                                     </div>
-                                    <div className='flex gap-3'>
+                                    <div className='flex gap-3 flex-wrap'>
                                         <button
-                                            className="bg-[#000000] hover:bg-[#1a1919] text-white px-6 py-2 rounded-lg transition-colors duration-300"
+                                            className="bg-gray-700 hover:bg-[#1a1919] text-white px-6 py-2 rounded-lg transition-colors duration-300"
                                             onClick={() => handleDeleteReservation(reservation.id)}                                            
                                         >
                                             Delete reservation
@@ -464,7 +407,7 @@ const AdminPanel = () => {
                                     <div className="text-[#e8e8e8]">{reservation.email}</div>
                                 </div>
                                 <div className="text-[#a1a1a1]">{reservation.date}</div>
-                                <div className="text-[#a1a1a1]">{reservation.time}</div>
+                                <div className="text-[#a1a1a1]">{reservation.start_time?.slice(0, 5)} - {reservation.end_time?.slice(0, 5)}</div>
                                 <div className="text-[#a1a1a1]">{reservation.service}</div>
                                 <div className="">
                                     <span className={`px-2 py-1 rounded text-sm font-bold text-black ${getStatusColor(reservation.status)}`}>
@@ -488,17 +431,17 @@ const AdminPanel = () => {
 
                 {/* Summary */}
                 <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="bg-[#2A2A2A] rounded-lg p-4 border border-[#4D2039]">
+                    <div className=" rounded-lg p-4 border border-[#4D2039]">
                         <div className="text-[#D41C8A] font-semibold">Total Reservations</div>
                         <div className="text-2xl font-bold text-white">{reservations.length}</div>
                     </div>
-                    <div className="bg-[#2A2A2A] rounded-lg p-4 border border-[#4D2039]">
+                    <div className=" rounded-lg p-4 border border-[#4D2039]">
                         <div className="text-green-400 font-semibold">Finished</div>
                         <div className="text-2xl font-bold text-white">
                             {reservations.filter(r => r.status === 'finished').length}
                         </div>
                     </div>
-                    <div className="bg-[#2A2A2A] rounded-lg p-4 border border-[#4D2039]">
+                    <div className=" rounded-lg p-4 border border-[#4D2039]">
                         <div className="text-yellow-400 font-semibold">Waiting</div>
                         <div className="text-2xl font-bold text-white">
                             {reservations.filter(r => r.status === 'waiting').length}

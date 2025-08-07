@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import DatePicker from 'react-datepicker'
-import { format } from "date-fns";
-import "react-datepicker/dist/react-datepicker.css"
 import emailjs from 'emailjs-com';
-import { createReservationWithClient } from '../lib/reservation';
-
+import DateTimeSelector from './DateTimeSelector'
+import { createReservationWithClient } from '../lib/db';
 
 const Reservation = () => {
   
@@ -18,8 +15,8 @@ const Reservation = () => {
     email: '',
     service: '',
     date: null,
-    time_end: null,
-    time_start: null,
+    start_time: '',
+    end_time: '',
     modification_token: ''
   })
 
@@ -35,32 +32,60 @@ const Reservation = () => {
     }))
   }
 
+  const handleReservationChange = (partial) => {
+    setFormData((prev) => ({ ...prev, ...partial }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (!formData.service || !formData.date || !formData.start_time) {
+      alert('Please be sure you have selectes a service, date and time.');
+      return;
+    }
+
     setIsSubmitting(true)
     setMessage({ type: '', text: '' })
 
     try {
-      const reservation = await createReservationWithClient(formData)
+      await createReservationWithClient(formData)
       setMessage({ type: 'success', text: t('reservation.messages.success') })
-      // sendEmail(formData, reservation.client_id)
+
+      try {
+        // sendEmail(formData)
+      } catch (error) {
+        console.error('Error sending email:', error)
+      }
+
     } catch (error) {
       console.error('Error creating reservation:', error)
       setMessage({ type: 'error', text: t('reservation.messages.error') })
     }
     finally {
+      setFormData({
+        name: '',
+        surname: '',
+        phone: '',
+        email: '',
+        service: '',
+        date: null,
+        start_time: '',
+        end_time: '',
+        modification_token: ''
+      })
+      
       setIsSubmitting(false)
     }
   }
-
   
-  const sendEmail = (formData, reservationId) => {
+  const sendEmail = (formData) => {
     const templateParams = {
       to_email: formData.email,
       to_name: `${formData.name} ${formData.surname}`,
       service: formData.service,
       date: formData.date.toLocaleDateString(),
-      time: formData.time,
+      start_time: formData.start_time,
+      end_time: formData.end_time,
       link_cancel: `https://studio-safira.vercel.app/cancel/${formData.modification_token}`,
       link_edit: `https://studio-safira.vercel.app/edit/${formData.modification_token}`
     };
@@ -192,6 +217,8 @@ const Reservation = () => {
             </div>
           </div>
         </div>
+
+        <DateTimeSelector value={formData} onChange={handleReservationChange} />
 
         {/* Submit Button */}
         <div className="text-center">
