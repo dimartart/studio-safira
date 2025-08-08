@@ -1,5 +1,4 @@
 import { supabase } from './supabaseClient';
-import { format } from 'date-fns';
 
 export const fetchReservationData = async (token) => {
   const { data, error } = await supabase
@@ -41,9 +40,6 @@ export async function createReservationWithClient(formData) {
     clientId = newClient.id;
   }
 
-  const modification_token = crypto.randomUUID();
-
-  // 3. Создать резервацию
   const { data: reservation, error: reservationError } = await supabase
     .from("reservations")
     .insert({
@@ -52,7 +48,7 @@ export async function createReservationWithClient(formData) {
       date: formData.date,
       start_time: formData.start_time,
       end_time: formData.end_time,
-      modification_token
+      modification_token: formData.modification_token
     })
     .select()
     .single();

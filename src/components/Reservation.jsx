@@ -17,7 +17,7 @@ const Reservation = () => {
     date: null,
     start_time: '',
     end_time: '',
-    modification_token: ''
+    modification_token: crypto.randomUUID()
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -71,7 +71,7 @@ const Reservation = () => {
         date: null,
         start_time: '',
         end_time: '',
-        modification_token: ''
+        modification_token: crypto.randomUUID()
       })
       
       setIsSubmitting(false)
@@ -79,6 +79,7 @@ const Reservation = () => {
   }
   
   const sendEmail = (formData) => {
+
     const templateParams = {
       to_email: formData.email,
       to_name: `${formData.name} ${formData.surname}`,
@@ -86,7 +87,7 @@ const Reservation = () => {
       date: formData.date,
       start_time: formData.start_time,
       end_time: formData.end_time,
-      link_cancel: `https://studio-safira.vercel.app/cancel/${formData.modification_token}`,
+      link_cancel: `https://studio-safira.vercel.app/edit/${formData.modification_token}`,
       link_edit: `https://studio-safira.vercel.app/edit/${formData.modification_token}`
     };
 
