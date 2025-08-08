@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-const Kadernictvi = () => {
+const Hairdressing = () => {
     const { t } = useTranslation();
 
     return (
@@ -124,4 +124,4 @@ const Kadernictvi = () => {
     );
 };
 
-export default Kadernictvi; 
+export default Hairdressing; 

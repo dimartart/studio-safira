@@ -1,14 +1,8 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
     const { t } = useTranslation();
-
-    const handleReservation = () => {
-        const reservationSection = document.getElementById('reservation');
-        if (reservationSection) {
-            reservationSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
 
     const contactInfo = [
         {
@@ -53,7 +47,6 @@ const Contact = () => {
     return (
         <div id="contact" className=" py-16 px-4 sm:px-6 lg:px-[10%]">
             <div className="max-w-7xl mx-auto">
-                {/* Header */}
                 <div className="text-center mb-12">
                     <h2 className="text-3xl lg:text-4xl font-bold text-[#D41C8A] mb-4">
                         {t('contact.title')}
@@ -84,12 +77,12 @@ const Contact = () => {
                             ))}
                         </div>
 
-                        <button 
-                            onClick={handleReservation}
-                            className="mt-8 w-full bg-[#D41C8A] text-white py-4 px-8 rounded-lg font-semibold text-lg hover:bg-[#B91570] transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                        <Link
+                            to="/reservation"
+                            className="inline-block mt-6 text-center w-full bg-[#D41C8A] text-white py-4 px-8 rounded-lg font-semibold text-lg hover:bg-[#B91570] transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                         >
                             {t('contact.reservationButton')}
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Map */}

@@ -1,9 +1,17 @@
-export const services = {
+export const servicesEng = {
     massage: "massage",
     nails: "nails",
     lymphatic: "lymphatic",
     haircut: "haircut",
     cosmetics: "cosmetics",
+};
+
+export const servicesCz = {
+    massage: "masáž",
+    nails: "pedikúra",
+    lymphatic: "lymfa",
+    haircut: "střih",
+    cosmetics: "kosmetika",
 };
 
 export const servicesDuration = {

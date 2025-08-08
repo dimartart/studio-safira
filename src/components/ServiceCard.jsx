@@ -8,7 +8,7 @@ const ServiceCard = () => {
         { 
             title: 'service.hairdressing', 
             image: '/service/kadernictvi.webp',
-            link: '/kadernictvi',
+            link: '/hairdressing',
             alt: 'Kadeřnické služby Studio Safira - střihy, barvení, styling pro dámy a pány',
             description: 'Profesionální kadeřnické služby včetně střihů, barvení a stylingu'
         },
@@ -39,7 +39,7 @@ const ServiceCard = () => {
         { 
             title: 'service.lymphatic', 
             image: '/service/lymfa.jpg',
-            link: '/lymphatic',
+            link: '/lympha',
             alt: 'Lymfatické drenáže Studio Safira - detoxikace a regenerace těla',
             description: 'Lymfatické drenáže pro detoxikaci a regeneraci'
         }

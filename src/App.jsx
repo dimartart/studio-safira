@@ -2,11 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import Kadernictvi from './pages/Kadernictvi'
+import Hairdressing from './pages/Hairdressing'
 import Cosmetics from './pages/Cosmetics'
 import Massage from './pages/Massage'
 import Nails from './pages/Nails'
-import Lymphatic from './pages/Lymphatic'
+import Lympha from './pages/Lympha'
 import Reservation from './pages/ReservationPage'
 import ScrollToTop from './components/ScrollToTop'
 import AdminRoute from './pages/AdminRouter' 
@@ -22,11 +22,11 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/kadernictvi" element={<Kadernictvi />} />
+            <Route path="/hairdressing" element={<Hairdressing />} />
             <Route path="/cosmetics" element={<Cosmetics />} />
             <Route path="/massage" element={<Massage />} />
             <Route path="/nails" element={<Nails />} />
-            <Route path="/lymphatic" element={<Lymphatic />} />
+            <Route path="/lympha" element={<Lympha />} />
             <Route path="/reservation" element={<Reservation />} />
             <Route path="/admin" element={<AdminRoute />} />
             <Route path="/edit/:modification_token" element={<EditReservation />} />

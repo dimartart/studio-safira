@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-const Lymphatic = () => {
+const Lympha = () => {
     const { t } = useTranslation();
 
     return (
@@ -80,4 +80,4 @@ const Lymphatic = () => {
     );
 };
 
-export default Lymphatic; 
+export default Lympha; 

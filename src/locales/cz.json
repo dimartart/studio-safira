@@ -349,8 +349,8 @@
     "title": "Rezervace termínu",
     "warningBanner": {
       "title": " Důležité informace o rezervaci",
-      "cancelationPolicy": "Rezervaci můžete zrušit nejpozději 4 hodiny před začátkem termínu.",
-      "confirmationTime": "Potvrzení rezervace obdržíte do 2 hodin od odeslání.",
+      "cancelationPolicy": "Rezervaci můžete zrušit nejpozději 24 hodiny před začátkem termínu.",
+      "confirmationTime": "Potvrzení rezervace obdržíte do 1 hodiny od odeslání na email.",
       "arrivalTime": "Prosíme, dostavte se 5 minut před začátkem termínu.",
       "contactInfo": "V případě potíží nás kontaktujte na +420 607 191 088."
     },
@@ -388,10 +388,39 @@
       "sunday": "Neděle: Zavřeno"
     },
     "messages": {
-      "success": "Rezervace byla úspěšně odeslána! Brzy vás budeme kontaktovat.",
+      "success": "Rezervace byla úspěšně odeslána! Potvrzení obdržíte do 1 hodiny na email.",
       "error": "Došlo k chybě při odesílání rezervace. Zkuste to prosím znovu.",
       "invalidDate": "Prosím vyberte platné datum.",
       "invalidTime": "Prosím vyberte dostupný čas."
     }
+  },
+  "datePicker": {
+    "placeholderDate": "Vyberte datum"    
+  },
+  "datetimeSelector": {
+    "Date": "Datum*",
+    "Time": "Čas*",
+    "Service": "Služba*",
+    "placeholderTime": "Vyberte čas",
+    "placeholderService": "Vyberte službu"
+  },
+  "alert": {
+    "error": "Prosím vyberte službu, datum a čas."
+  },
+  "editReservation": {
+    "title": "Upravit rezervaci",
+    "loading": "Načítání...",
+    "reservationData": "Údaje vaší rezervace:",
+    "service": "Služba:",
+    "date": "Datum:",
+    "time": "Čas:",
+    "client": "Klient:",
+    "phone": "Telefon:",
+    "email": "Email:",
+    "enterNewData": "Zadejte novou službu, datum a čas:",
+    "editButton": "Upravit rezervaci",
+    "cancelButton": "Zrušit rezervaci",
+    "cancelledMessage": "Rezervace byla úspěšně zrušena. Nyní můžete zavřít tuto stránku.",
+    "updatedMessage": "Rezervace byla úspěšně aktualizována. Obnovte stránku pro zobrazení změn."
   }
 } 

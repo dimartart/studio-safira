@@ -6,7 +6,7 @@ const Navbar = () => {
     const services = [
         {
             nameKey: "navbar.hairdressing",
-            url: "/kadernictvi"
+            url: "/hairdressing"
         },
         {
             nameKey: "navbar.cosmetics",
@@ -22,7 +22,7 @@ const Navbar = () => {
         },
         {
             nameKey: "navbar.lymphatic",
-            url: "/lymphatic"
+            url: "/lympha"
         }
     ]
     
@@ -165,7 +165,7 @@ const Navbar = () => {
                             onClick={() => setIsMenuOpen(false)}>
                                     {t('navbar.home')}
                             </Link>
-                            <Link to="/kadernictvi" className="hover:text-gray-300 transition-colors duration-200"
+                            <Link to="/Hairdressing" className="hover:text-gray-300 transition-colors duration-200"
                             onClick={() => setIsMenuOpen(false)}>
                                 {t('navbar.hairdressing')}
                             </Link>
@@ -181,7 +181,7 @@ const Navbar = () => {
                             onClick={() => setIsMenuOpen(false)}>
                                 {t('navbar.nails')}
                             </Link>
-                            <Link to="/lymphatic" className="hover:text-gray-300 transition-colors duration-200"
+                            <Link to="/lympha" className="hover:text-gray-300 transition-colors duration-200"
                             onClick={() => setIsMenuOpen(false)}>
                                 {t('navbar.lymphatic')}
                             </Link>

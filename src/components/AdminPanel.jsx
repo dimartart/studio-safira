@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { services } from "../lib/services";
+import { servicesEng, servicesCz } from "../lib/services";
 import { supabase } from "../lib/supabaseClient";
 import {
     fetchReservationsWithFilters,
@@ -8,10 +8,12 @@ import {
     deleteReservation,
     deleteClient
   } from "../lib/db";
+import { useTranslation } from "react-i18next";
 
 
 const AdminPanel = () => {
     const inputRef = useRef();
+    const { i18n, t } = useTranslation();
 
     const [reservations, setReservations] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -204,7 +206,11 @@ const AdminPanel = () => {
                             className="appearance-none border border-[#D41C8A] rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A] focus:border-transparent"
                         >
                             <option value='' className='text-black'>Select Service</option>
-                            {Object.values(services).map(service => (
+                            {i18n.language === 'cz' ? Object.values(servicesCz).map(service => (
+                                <option 
+                                className='text-black'
+                                 key={service} value={service}>{service}</option>
+                            )) : Object.values(servicesEng).map(service => (
                                 <option 
                                 className='text-black'
                                  key={service} value={service}>{service}</option>
@@ -349,7 +355,9 @@ const AdminPanel = () => {
                                             className="w-full bg-black border border-[#D41C8A] rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[#D41C8A]"
                                         >
                                             <option value="">Select Service</option>
-                                            {Object.values(services).map(service => (
+                                            {i18n.language === 'cz' ? Object.values(servicesCz).map(service => (
+                                                <option key={service} value={service}>{service}</option>
+                                            )) : Object.values(servicesEng).map(service => (
                                                 <option key={service} value={service}>{service}</option>
                                             ))}
                                         </select>

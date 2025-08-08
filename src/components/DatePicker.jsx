@@ -3,6 +3,7 @@ import { DayPicker } from "react-day-picker";
 import 'react-day-picker/dist/style.css';
 import { format } from "date-fns";
 import { formatInTimeZone } from 'date-fns-tz';
+import { useTranslation } from "react-i18next";
 
 const PRAGUE_TZ = 'Europe/Prague';
 
@@ -39,7 +40,7 @@ const isDateDisabled = (date) => {
 export default function DatePicker({ value, onChange }) {
   const [open, setOpen] = useState(false);
   const datePickerRef = useRef(null);
-
+  const { t } = useTranslation()
   // Close picker when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -61,7 +62,7 @@ export default function DatePicker({ value, onChange }) {
     <div className="w-full" ref={datePickerRef}>
       <input
         readOnly
-        placeholder="Choose date"
+        placeholder={t('datePicker.placeholderDate')}
         className="cursor-pointer p-2 rounded border border-[#4D2039] text-white w-full"
         value={value ? format(value, 'dd.MM.yyyy') : ''}
         onClick={() => setOpen(!open)}

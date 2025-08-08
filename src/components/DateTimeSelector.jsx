@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { format, isBefore, addMinutes } from "date-fns";
 import DatePicker from "./DatePicker";
-import { servicesDuration } from "../lib/services";
-import { services } from "../lib/services";
+import { servicesDuration, servicesEng, servicesCz } from "../lib/services";
 import { supabase } from "../lib/supabaseClient";
+import { useTranslation } from "react-i18next";
 
 
 const DateTimeSelector = ({value, onChange}) => {
+  const { t, i18n } = useTranslation()
+  
   const [selected, setSelected] = useState({
     service: value?.service ,
     date: value?.date || null,
@@ -104,14 +106,22 @@ const DateTimeSelector = ({value, onChange}) => {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-white p-6 rounded-lg border border-[#D41C8A] shadow-lg">
 
       <div className="flex flex-col gap-2">
-        <label>Service*</label>
+        <label>{t('datetimeSelector.Service')}</label>
         <select
           className="cursor-pointer p-2 rounded-lg border border-[#4D2039] shadow-lg"
           value={selected.service}
           onChange={(e) => handleChange("service", e.target.value)}
         >
-          <option value="" className="text-white bg-black">Choose service</option>
-          {Object.values(services).map((service) => (
+          <option value="" className="text-white bg-black">{t('datetimeSelector.placeholderService')}</option>
+
+          {i18n.language === 'cz' ? Object.values(servicesCz).map((service) => (
+            <option key={service} 
+            value={service}
+            className="text-white bg-black"
+            >
+              {service}
+            </option>
+          )) : Object.values(servicesEng).map((service) => (
             <option key={service} 
             value={service}
             className="text-white bg-black"
@@ -123,7 +133,7 @@ const DateTimeSelector = ({value, onChange}) => {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label>Date*</label>
+        <label>{t('datetimeSelector.Date')}</label>
       <DatePicker
         value={selected.date ? new Date(selected.date) : null}
         onChange={(val) => handleChange("date", val)}
@@ -131,7 +141,7 @@ const DateTimeSelector = ({value, onChange}) => {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label>Time*</label>
+        <label>{t('datetimeSelector.Time')}</label>
         <select 
           className={`cursor-pointer p-2 rounded-lg border border-[#4D2039] shadow-lg
           ${!selected.date || !selected.service ? 'opacity-50 cursor-not-allowed' : ''}`}
@@ -141,7 +151,7 @@ const DateTimeSelector = ({value, onChange}) => {
             handleChange("start_time", e.target.value);
           }}
         >
-          <option value="" className="text-white bg-black">Choose time</option>
+          <option value="" className="text-white bg-black">{t('datetimeSelector.placeholderTime')}</option>
           {availableSlots.map((slot) => (
             <option key={slot} value={slot} className="text-white bg-black">{slot}</option>
           ))}

@@ -7,7 +7,7 @@ const Footer = () => {
     const services = [
         {
             nameKey: "navbar.hairdressing",
-            url: "/kadernictvi"
+            url: "/hairdressing"
         },
         {
             nameKey: "navbar.cosmetics",
@@ -23,7 +23,7 @@ const Footer = () => {
         },
         {
             nameKey: "navbar.lymphatic",
-            url: "/lymphatic"
+            url: "/lympha"
         }
     ]
 

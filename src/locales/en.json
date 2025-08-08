@@ -349,8 +349,8 @@
     "title": "Book Appointment",
     "warningBanner": {
       "title": " Important Reservation Information",
-      "cancelationPolicy": "You can cancel your reservation up to 4 hours before the appointment starts.",
-      "confirmationTime": "You will receive confirmation within 2 hours of submission.",
+      "cancelationPolicy": "You can cancel your reservation up to 24 hours before the appointment starts.",
+      "confirmationTime": "You will receive confirmation within 1 hour of submission by email.",
       "arrivalTime": "Please arrive 5 minutes before your appointment time.",
       "contactInfo": "If you have any issues, contact us at +420 607 191 088."
     },
@@ -388,10 +388,39 @@
       "sunday": "Sunday: Closed"
     },
     "messages": {
-      "success": "Reservation submitted successfully! We will contact you soon.",
+      "success": "Reservation submitted successfully! Confirmation will be sent to your email within 1 hour.",
       "error": "There was an error submitting your reservation. Please try again.",
       "invalidDate": "Please select a valid date.",
       "invalidTime": "Please select an available time."
     }
+  },
+  "datePicker": {
+    "placeholderDate": "Select date"
+  },
+  "datetimeSelector": {
+    "Date": "Date*",
+    "Time": "Time*",
+    "Service": "Service*",
+    "placeholderTime": "Select time",
+    "placeholderService": "Select service"
+  },
+  "alert": {
+    "error": "Please select a service, date and time."
+  },
+  "editReservation": {
+    "title": "Edit Reservation",
+    "loading": "Loading...",
+    "reservationData": "Data of your reservation:",
+    "service": "Service:",
+    "date": "Date:",
+    "time": "Time:",
+    "client": "Client:",
+    "phone": "Phone:",
+    "email": "Email:",
+    "enterNewData": "Enter new service, data and time:",
+    "editButton": "Edit Reservation",
+    "cancelButton": "Cancel Reservation",
+    "cancelledMessage": "Reservation cancelled successfully. Now you can close this page.",
+    "updatedMessage": "Reservation updated successfully. Reload the page to see the changes."
   }
 } 

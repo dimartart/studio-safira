@@ -40,7 +40,7 @@ const Reservation = () => {
     e.preventDefault()
 
     if (!formData.service || !formData.date || !formData.start_time) {
-      alert('Please be sure you have selectes a service, date and time.');
+      alert(t('alert.error'));
       return;
     }
 
@@ -52,7 +52,7 @@ const Reservation = () => {
       setMessage({ type: 'success', text: t('reservation.messages.success') })
 
       try {
-        // sendEmail(formData)
+        sendEmail(formData)
       } catch (error) {
         console.error('Error sending email:', error)
       }
@@ -83,7 +83,7 @@ const Reservation = () => {
       to_email: formData.email,
       to_name: `${formData.name} ${formData.surname}`,
       service: formData.service,
-      date: formData.date.toLocaleDateString(),
+      date: formData.date,
       start_time: formData.start_time,
       end_time: formData.end_time,
       link_cancel: `https://studio-safira.vercel.app/cancel/${formData.modification_token}`,
